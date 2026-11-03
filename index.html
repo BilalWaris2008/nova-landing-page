@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>NOVA | AI analytics that explains why your numbers moved</title>
+  <meta name="description"
+    content="NOVA connects to your data, answers questions in plain English and explains the cause behind every spike. Start free in under a minute.">
+  <meta name="author" content="Muhammad Bilal Waris">
+  <link rel="canonical" href="https://nova-ai-page.vercel.app/">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="NOVA">
+  <meta property="og:title" content="NOVA | AI analytics that explains why your numbers moved">
+  <meta property="og:description"
+    content="NOVA connects to your data, answers questions in plain English and explains the cause behind every spike. Start free in under a minute.">
+  <meta property="og:url" content="https://nova-ai-page.vercel.app/">
+  <meta property="og:image" content="https://nova-ai-page.vercel.app/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="NOVA: know why your numbers moved, not just that they did.">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="NOVA | AI analytics that explains why your numbers moved">
+  <meta name="twitter:description"
+    content="NOVA connects to your data, answers questions in plain English and explains the cause behind every spike. Start free in under a minute.">
+  <meta name="twitter:image" content="https://nova-ai-page.vercel.app/og-image.png">
+
+  <link rel="icon" type="image/svg+xml"
+    href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2064%2064%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%237B61FF%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23FF9E6D%22%2F%3E%3C%2FlinearGradient%3E%3C%2Fdefs%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20rx%3D%2216%22%20fill%3D%22%23070A1B%22%2F%3E%3Cpath%20d%3D%22M32%208L38%2026L56%2032L38%2038L32%2056L26%2038L8%2032L26%2026Z%22%20fill%3D%22url%28%23g%29%22%2F%3E%3C%2Fsvg%3E">
+  <meta name="theme-color" content="#070A1B">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600&family=Sora:wght@500;600;700&display=swap"
+    rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/swiper@11.1.14/swiper-bundle.min.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+
+  <!-- Vercel Web Analytics (sirf deployed site par chalta hai) -->
+  <script>
+    window.va = window.va || function () {
+      (window.vaq = window.vaq || []).push(arguments);
+    };
+  </script>
+  <script defer src="/_vercel/insights/script.js"></script>
+</head>
+
+<body>
+
+  <div class="cursor" aria-hidden="true"></div>
+
+  <!-- Preloader -->
+  <div id="preloader" aria-hidden="true">
+    <span class="pre-brand">NOVA</span>
+    <span class="pre-count" id="preCount">0</span>
+  </div>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg fixed-top nova-nav" id="nav">
+    <div class="container">
+      <a class="navbar-brand" href="#home"><span class="logo-dot"></span>NOVA</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu"
+        aria-controls="navMenu" aria-expanded="false" aria-label="Toggle menu">
+        <span class="burger" aria-hidden="true"><i></i><i></i></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navMenu">
+        <ul class="navbar-nav mx-auto">
+          <li class="nav-item"><a class="nav-link" href="#features">Features</a></li>
+          <li class="nav-item"><a class="nav-link" href="#how">How it works</a></li>
+          <li class="nav-item"><a class="nav-link" href="#pricing">Pricing</a></li>
+          <li class="nav-item"><a class="nav-link" href="#faq">FAQ</a></li>
+        </ul>
+        <div class="d-flex align-items-lg-center flex-column flex-lg-row gap-2 mt-3 mt-lg-0">
+          <a href="#" class="btn btn-ghost">Sign in</a>
+          <a href="#pricing" class="btn btn-nova magnetic">Start free</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <header class="hero" id="home">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="grid-bg"></div>
+
+    <div class="container position-relative">
+      <div class="row justify-content-center text-center">
+        <div class="col-lg-10 col-xl-9">
+          <p class="hero-badge"><span class="pulse"></span>NOVA now explains every spike for you</p>
+          <h1 class="hero-title">Know why your numbers moved, not just that they did.</h1>
+          <p class="hero-sub">Connect your data once, ask in plain English, and NOVA finds the cause and draws the
+            chart.</p>
+          <div class="hero-cta">
+            <a href="#pricing" class="btn btn-nova btn-lg magnetic">Start free</a>
+            <a href="#how" class="btn btn-ghost btn-lg"><i class="bi bi-play-circle me-2"></i>Watch the 2-min demo</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Live demo mockup -->
+      <div class="mock-wrap">
+        <div class="mock tilt">
+          <div class="mock-bar"><i></i><i></i><i></i><span>nova.app / revenue</span></div>
+          <div class="ask"><i class="bi bi-stars"></i><span id="typed"></span></div>
+          <div class="kpis">
+            <div><small>Revenue</small><strong>$48.2k</strong><em class="good">+18%</em></div>
+            <div><small>Active teams</small><strong>1,284</strong><em class="good">+9%</em></div>
+            <div><small>Churn</small><strong>2.1%</strong><em class="good">-0.6%</em></div>
+          </div>
+          <svg viewBox="0 0 600 200" class="chart" aria-hidden="true">
+            <defs>
+              <linearGradient id="gArea" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#7B61FF" stop-opacity=".45" />
+                <stop offset="1" stop-color="#7B61FF" stop-opacity="0" />
+              </linearGradient>
+              <linearGradient id="gLine" x1="0" x2="1">
+                <stop offset="0" stop-color="#7B61FF" />
+                <stop offset="1" stop-color="#FF9E6D" />
+              </linearGradient>
+            </defs>
+            <path id="chartArea" fill="url(#gArea)"
+              d="M0 160 C60 150 90 120 140 126 S220 150 270 100 S360 60 420 80 S520 30 600 20 L600 200 L0 200 Z" />
+            <path id="chartLine" pathLength="1" fill="none" stroke="url(#gLine)" stroke-width="3" stroke-linecap="round"
+              d="M0 160 C60 150 90 120 140 126 S220 150 270 100 S360 60 420 80 S520 30 600 20" />
+          </svg>
+          <p class="insight"><i class="bi bi-lightning-charge-fill"></i>Revenue rose 18% after the Oct 3 pricing change,
+            mostly from Team plan upgrades.</p>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Step 2A: Logos marquee -->
+    <section class="logos">
+      <p class="logos-title">Trusted by data teams at fast-growing companies</p>
+      <div class="marquee">
+        <div class="marquee-track">
+          <ul class="marquee-group">
+            <li>Halcyon</li>
+            <li>Meridian Labs</li>
+            <li>Fernhill</li>
+            <li>Parcel&amp;Co</li>
+            <li>Tidewater</li>
+            <li>Kinetic</li>
+            <li>Vantage Row</li>
+            <li>Orchard</li>
+          </ul>
+          <ul class="marquee-group" aria-hidden="true">
+            <li>Halcyon</li>
+            <li>Meridian Labs</li>
+            <li>Fernhill</li>
+            <li>Parcel&amp;Co</li>
+            <li>Tidewater</li>
+            <li>Kinetic</li>
+            <li>Vantage Row</li>
+            <li>Orchard</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Step 2B: Features bento grid -->
+    <section class="section" id="features">
+      <div class="container">
+        <div class="row align-items-end g-4 mb-5">
+          <div class="col-lg-7">
+            <h2 class="section-title">Every question your team asks, answered before the meeting starts.</h2>
+          </div>
+          <div class="col-lg-4 offset-lg-1">
+            <p class="section-sub">Stop waiting on analysts and dashboards. NOVA turns raw data into answers anyone can
+              read.</p>
+          </div>
+        </div>
+
+        <div class="row g-3">
+          <div class="col-lg-7">
+            <article class="bento-card">
+              <h3>Ask in plain English</h3>
+              <p>Type a question the way you would ask a teammate. NOVA writes the query, runs it and draws the answer.
+              </p>
+              <div class="chat">
+                <div class="msg msg-q">Which plan has the highest churn this quarter?</div>
+                <div class="msg msg-a">
+                  <strong>Starter plan, at 4.8%.</strong> Most cancellations happen within 30 days, right after the free
+                  trial ends.
+                  <svg class="spark" viewBox="0 0 200 44" aria-hidden="true">
+                    <path pathLength="1" d="M0 34 C20 30 30 8 55 14 S90 40 120 24 S170 4 200 10" />
+                  </svg>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <div class="col-lg-5">
+            <article class="bento-card">
+              <h3>Finds the cause, not just the chart</h3>
+              <p>NOVA ranks what moved a number and how much each factor added.</p>
+              <ul class="drivers">
+                <li><span>Pricing change</span>
+                  <div class="bar"><i style="--w:78"></i></div><b>+11%</b>
+                </li>
+                <li><span>Referral campaign</span>
+                  <div class="bar"><i style="--w:42"></i></div><b>+5%</b>
+                </li>
+                <li><span>Seasonality</span>
+                  <div class="bar"><i style="--w:18"></i></div><b>+2%</b>
+                </li>
+              </ul>
+            </article>
+          </div>
+
+          <div class="col-lg-4">
+            <article class="bento-card">
+              <h3>Alerts that explain themselves</h3>
+              <p>Get told when something changes and why, in one message.</p>
+              <div class="alert-note"><i class="bi bi-exclamation-triangle-fill"></i><span>Signups fell 12% on Tuesday.
+                  Checkout slowed down after the 4:10 pm release.</span></div>
+            </article>
+          </div>
+
+          <div class="col-lg-4">
+            <article class="bento-card">
+              <h3>Works with your stack</h3>
+              <p>Plug in your warehouse, billing and product tools in a few clicks.</p>
+              <div class="chips">
+                <span><i class="bi bi-database"></i></span>
+                <span><i class="bi bi-stripe"></i></span>
+                <span><i class="bi bi-slack"></i></span>
+                <span><i class="bi bi-google"></i></span>
+                <span><i class="bi bi-github"></i></span>
+                <span class="more">+40 more</span>
+              </div>
+            </article>
+          </div>
+
+          <div class="col-lg-4">
+            <article class="bento-card">
+              <i class="bi bi-shield-lock shield"></i>
+              <h3>Your data stays yours</h3>
+              <p>NOVA reads from your warehouse and never copies it. Everything is encrypted in transit and at rest.</p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Step 3: How it works (pinned scroll) -->
+    <section class="how" id="how">
+      <div class="container">
+        <div class="row align-items-center gy-5 gx-lg-5">
+          <div class="col-lg-5">
+            <h2 class="section-title">From raw data to a decision in three moves.</h2>
+            <div class="steps-wrap">
+              <div class="rail"><i></i></div>
+              <ol class="steps">
+                <li class="step active">
+                  <h3>Connect your data</h3>
+                  <p>Link your warehouse, billing and product tools once. NOVA indexes everything in minutes.</p>
+                </li>
+                <li class="step">
+                  <h3>Ask a question</h3>
+                  <p>Type it in plain English. NOVA writes the query, runs it and checks the result.</p>
+                </li>
+                <li class="step">
+                  <h3>Act on the answer</h3>
+                  <p>Share the cause with your team in one click, with the chart attached.</p>
+                </li>
+              </ol>
+            </div>
+          </div>
+
+          <div class="col-lg-7">
+            <div class="stage">
+              <div class="panel">
+                <p class="panel-title">Data sources</p>
+                <ul class="sources">
+                  <li><i class="bi bi-database"></i><span>Warehouse</span><em>Connected</em></li>
+                  <li><i class="bi bi-stripe"></i><span>Billing</span><em>Connected</em></li>
+                  <li><i class="bi bi-github"></i><span>Product events</span><em>Connected</em></li>
+                </ul>
+                <p class="panel-foot">4.2M rows indexed in 38 seconds</p>
+              </div>
+
+              <div class="panel">
+                <div class="ask"><i class="bi bi-stars"></i><span>Why did signups drop on Tuesday?</span></div>
+                <pre class="code"><code>SELECT day, COUNT(*) AS signups
+FROM users
+WHERE created_at &gt;= now() - interval '14 days'
+GROUP BY day ORDER BY day;</code></pre>
+                <p class="panel-foot">NOVA wrote and ran this query for you</p>
+              </div>
+
+              <div class="panel">
+                <p class="panel-title">Result</p>
+                <div class="result">
+                  <i class="bi bi-check-circle-fill"></i>
+                  <span><strong>Cause found.</strong> Signups fell 12% on Tuesday because checkout slowed down after the
+                    4:10 pm release.</span>
+                </div>
+                <div class="actions">
+                  <button type="button" class="btn btn-nova"><i class="bi bi-slack me-2"></i>Send to #growth</button>
+                  <button type="button" class="btn btn-ghost">Save as report</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Step 4A: Stats -->
+    <section class="stats">
+      <div class="container">
+        <div class="row g-0">
+          <div class="col-6 col-lg-3">
+            <div class="stat"><strong data-count="4.2" data-decimals="1" data-suffix="B">4.2B</strong><span>rows
+                analysed every day</span></div>
+          </div>
+          <div class="col-6 col-lg-3">
+            <div class="stat"><strong data-count="38" data-suffix=" sec">38 sec</strong><span>average time to connect a
+                source</span></div>
+          </div>
+          <div class="col-6 col-lg-3">
+            <div class="stat"><strong data-count="2400" data-suffix="+">2,400+</strong><span>teams asking NOVA
+                questions</span></div>
+          </div>
+          <div class="col-6 col-lg-3">
+            <div class="stat"><strong data-count="99.98" data-decimals="2" data-suffix="%">99.98%</strong><span>uptime
+                over the last 12 months</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Step 4B: Product showcase (parallax) -->
+    <section class="showcase" id="showcase">
+      <div class="container">
+        <div class="text-center mx-auto mb-5" style="max-width: 40rem;">
+          <h2 class="section-title">One place for every number your company runs on.</h2>
+          <p class="section-sub mt-3">Revenue, product and support data side by side, with the answer a question away.
+          </p>
+        </div>
+        <div class="showcase-stage">
+          <div class="showcase-main">
+            <aside class="side"><i class="bi bi-grid-1x2-fill on"></i><i class="bi bi-graph-up"></i><i
+                class="bi bi-people"></i><i class="bi bi-gear"></i></aside>
+            <div class="board">
+              <div class="board-head"><strong>Revenue overview</strong><span>Last 12 months</span></div>
+              <div class="bars">
+                <i style="--h:34"></i><i style="--h:42"></i><i style="--h:38"></i><i style="--h:50"></i><i
+                  style="--h:46"></i><i style="--h:58"></i>
+                <i style="--h:55"></i><i style="--h:64"></i><i style="--h:70"></i><i style="--h:76"></i><i
+                  style="--h:88"></i><i style="--h:96"></i>
+              </div>
+            </div>
+          </div>
+          <div class="float-card f1" data-speed="0.35"><i class="bi bi-bullseye"></i>
+            <div><small>Conversion</small><strong>3.8%</strong></div><em>+0.4</em>
+          </div>
+          <div class="float-card f2" data-speed="0.2"><i class="bi bi-graph-up-arrow"></i>
+            <div><small>Forecast, next month</small><strong>$62k</strong></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Step 5A: Testimonials (Swiper) -->
+    <section class="testimonials" id="stories">
+      <div class="container">
+        <div class="t-head">
+          <h2 class="section-title">Teams that stopped waiting for answers.</h2>
+          <div class="t-nav">
+            <button type="button" class="t-prev" aria-label="Previous"><i class="bi bi-arrow-left"></i></button>
+            <button type="button" class="t-next" aria-label="Next"><i class="bi bi-arrow-right"></i></button>
+          </div>
+        </div>
+      </div>
+      <div class="swiper swiper-t">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+            <figure class="t-card">
+              <blockquote>We used to wait two days for an analyst. Now the whole team has the answer before standup.
+              </blockquote>
+              <figcaption class="t-person"><span class="avatar">SM</span><span><strong>Sana Malik</strong><small>Head of
+                    Growth, Halcyon</small></span></figcaption>
+            </figure>
+          </div>
+          <div class="swiper-slide">
+            <figure class="t-card">
+              <blockquote>NOVA told us why churn moved, not just that it did. We fixed onboarding the same week.
+              </blockquote>
+              <figcaption class="t-person"><span class="avatar">DO</span><span><strong>Daniel Ortiz</strong><small>COO,
+                    Meridian Labs</small></span></figcaption>
+            </figure>
+          </div>
+          <div class="swiper-slide">
+            <figure class="t-card">
+              <blockquote>I stopped building one-off dashboards. People just ask NOVA.</blockquote>
+              <figcaption class="t-person"><span class="avatar">PR</span><span><strong>Priya Raman</strong><small>Data
+                    Lead, Fernhill</small></span></figcaption>
+            </figure>
+          </div>
+          <div class="swiper-slide">
+            <figure class="t-card">
+              <blockquote>The Slack alerts explain themselves. That alone saved us from a bad release.</blockquote>
+              <figcaption class="t-person"><span class="avatar">MH</span><span><strong>Marcus Hale</strong><small>CTO,
+                    Parcel&amp;Co</small></span></figcaption>
+            </figure>
+          </div>
+          <div class="swiper-slide">
+            <figure class="t-card">
+              <blockquote>Setup took under a minute. Our finance team was asking questions by lunch.</blockquote>
+              <figcaption class="t-person"><span class="avatar">AT</span><span><strong>Aiko Tanaka</strong><small>VP
+                    Finance, Tidewater</small></span></figcaption>
+            </figure>
+          </div>
+          <div class="swiper-slide">
+            <figure class="t-card">
+              <blockquote>It reads our warehouse and never copies it, which made security sign-off painless.
+              </blockquote>
+              <figcaption class="t-person"><span class="avatar">LF</span><span><strong>Lena Fischer</strong><small>Head
+                    of Security, Kinetic</small></span></figcaption>
+            </figure>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Step 5B: Pricing -->
+    <section class="section pricing" id="pricing">
+      <div class="container">
+        <div class="text-center mx-auto mb-5" style="max-width: 38rem;">
+          <h2 class="section-title">Simple pricing that grows with your team.</h2>
+          <p class="section-sub mt-3 mb-4">Start free. Upgrade when more people start asking questions.</p>
+          <div class="seg" data-mode="monthly">
+            <button type="button" class="active" data-mode="monthly" aria-pressed="true">Monthly</button>
+            <button type="button" data-mode="yearly" aria-pressed="false">Yearly<em>Save 20%</em></button>
+          </div>
+        </div>
+
+        <div class="row g-3 align-items-stretch">
+          <div class="col-lg-4">
+            <article class="plan">
+              <h3 class="plan-name">Starter</h3>
+              <p class="plan-desc">For trying NOVA on your own data.</p>
+              <div class="price"><em class="cur">$</em><b data-monthly="0" data-yearly="0">0</b></div>
+              <p class="billed" data-monthly="Free forever" data-yearly="Free forever">Free forever</p>
+              <ul>
+                <li><i class="bi bi-check2"></i>1 data source</li>
+                <li><i class="bi bi-check2"></i>50 questions a month</li>
+                <li><i class="bi bi-check2"></i>Charts and exports</li>
+              </ul>
+              <button type="button" class="btn btn-ghost">Start free</button>
+            </article>
+          </div>
+          <div class="col-lg-4">
+            <article class="plan featured">
+              <span class="badge-pop">Most popular</span>
+              <h3 class="plan-name">Team</h3>
+              <p class="plan-desc">For teams that live in their numbers.</p>
+              <div class="price"><em class="cur">$</em><b data-monthly="49" data-yearly="39">49</b><span>/ month</span>
+              </div>
+              <p class="billed" data-monthly="Billed monthly" data-yearly="Billed yearly">Billed monthly</p>
+              <ul>
+                <li><i class="bi bi-check2"></i>Unlimited questions</li>
+                <li><i class="bi bi-check2"></i>10 data sources</li>
+                <li><i class="bi bi-check2"></i>Slack and email alerts that explain themselves</li>
+                <li><i class="bi bi-check2"></i>Shared reports</li>
+              </ul>
+              <button type="button" class="btn btn-nova magnetic">Start 14-day trial</button>
+            </article>
+          </div>
+          <div class="col-lg-4">
+            <article class="plan">
+              <h3 class="plan-name">Scale</h3>
+              <p class="plan-desc">For companies with strict data rules.</p>
+              <div class="price"><em class="cur">$</em><b data-monthly="149" data-yearly="119">149</b><span>/
+                  month</span></div>
+              <p class="billed" data-monthly="Billed monthly" data-yearly="Billed yearly">Billed monthly</p>
+              <ul>
+                <li><i class="bi bi-check2"></i>Everything in Team</li>
+                <li><i class="bi bi-check2"></i>Unlimited sources</li>
+                <li><i class="bi bi-check2"></i>Single sign-on and audit log</li>
+                <li><i class="bi bi-check2"></i>Priority support</li>
+              </ul>
+              <button type="button" class="btn btn-ghost">Talk to sales</button>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Step 6A: FAQ -->
+    <section class="section faq" id="faq">
+      <div class="container">
+        <div class="row gy-5 gx-lg-5">
+          <div class="col-lg-4">
+            <div class="faq-side">
+              <h2 class="section-title">Questions, answered.</h2>
+              <p class="section-sub mt-3">Cannot find yours? Write to <a href="mailto:hello@nova.example"
+                  class="link-line">hello@nova.example</a> and a human will reply.</p>
+            </div>
+          </div>
+          <div class="col-lg-8">
+            <div class="accordion" id="faqList">
+              <div class="accordion-item">
+                <h3 class="accordion-header"><button class="accordion-button" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#faq0" aria-expanded="true" aria-controls="faq0">Do I need to know SQL?</button>
+                </h3>
+                <div id="faq0" class="accordion-collapse collapse show" data-bs-parent="#faqList">
+                  <div class="accordion-body">No. Ask in plain English and NOVA writes the query for you. The query is
+                    always shown, so an analyst can check it if they want to.</div>
+                </div>
+              </div>
+              <div class="accordion-item">
+                <h3 class="accordion-header"><button class="accordion-button collapsed" type="button"
+                    data-bs-toggle="collapse" data-bs-target="#faq1" aria-expanded="false" aria-controls="faq1">Where
+                    does my data live?</button></h3>
+                <div id="faq1" class="accordion-collapse collapse" data-bs-parent="#faqList">
+                  <div class="accordion-body">In your own warehouse. NOVA reads from it and never copies it. Everything
+                    is encrypted in transit and at rest.</div>
+                </div>
+              </div>
+              <div class="accordion-item">
+                <h3 class="accordion-header"><button class="accordion-button collapsed" type="button"
+                    data-bs-toggle="collapse" data-bs-target="#faq2" aria-expanded="false" aria-controls="faq2">How do I
+                    know an answer is right?</button></h3>
+                <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqList">
+                  <div class="accordion-body">Every answer comes with the query and the rows behind it. If something
+                    looks off, you can open it and see exactly how NOVA got there.</div>
+                </div>
+              </div>
+              <div class="accordion-item">
+                <h3 class="accordion-header"><button class="accordion-button collapsed" type="button"
+                    data-bs-toggle="collapse" data-bs-target="#faq3" aria-expanded="false" aria-controls="faq3">Which
+                    tools can I connect?</button></h3>
+                <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqList">
+                  <div class="accordion-body">Warehouses, billing, product analytics and chat tools, more than 40 in
+                    total. Most connect in under a minute.</div>
+                </div>
+              </div>
+              <div class="accordion-item">
+                <h3 class="accordion-header"><button class="accordion-button collapsed" type="button"
+                    data-bs-toggle="collapse" data-bs-target="#faq4" aria-expanded="false" aria-controls="faq4">Can I
+                    cancel anytime?</button></h3>
+                <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqList">
+                  <div class="accordion-body">Yes. Monthly plans can be cancelled at any time, and your reports stay
+                    available for 30 days after.</div>
+                </div>
+              </div>
+              <div class="accordion-item">
+                <h3 class="accordion-header"><button class="accordion-button collapsed" type="button"
+                    data-bs-toggle="collapse" data-bs-target="#faq5" aria-expanded="false" aria-controls="faq5">Is there
+                    a free plan?</button></h3>
+                <div id="faq5" class="accordion-collapse collapse" data-bs-parent="#faqList">
+                  <div class="accordion-body">Yes. Starter is free forever with one data source and 50 questions a
+                    month, so you can try NOVA on real data.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Step 6B: Final CTA -->
+    <section class="cta">
+      <div class="container">
+        <div class="cta-box">
+          <div class="orb orb-3"></div>
+          <div class="orb orb-4"></div>
+          <h2 class="section-title">Your next meeting should start with the answer.</h2>
+          <p class="section-sub mt-3">Connect your first data source in under a minute. No card needed.</p>
+          <form class="cta-form" id="ctaForm" novalidate>
+            <input type="email" id="ctaEmail" placeholder="you@company.com" aria-label="Work email" required>
+            <button type="submit" class="btn btn-nova magnetic">Start free</button>
+          </form>
+          <p class="cta-msg" id="ctaMsg" role="status" aria-live="polite"></p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="row gy-5 gx-lg-5">
+        <div class="col-lg-5 foot-brand">
+          <a class="navbar-brand" href="#home"><span class="logo-dot"></span>NOVA</a>
+          <p>Ask your data why. NOVA finds the cause behind every number and shows you the chart.</p>
+        </div>
+        <div class="col-6 col-lg-2 offset-lg-1">
+          <h4>Product</h4>
+          <ul>
+            <li><a href="#features">Features</a></li>
+            <li><a href="#how">How it works</a></li>
+            <li><a href="#pricing">Pricing</a></li>
+            <li><a href="#faq">FAQ</a></li>
+          </ul>
+        </div>
+        <div class="col-6 col-lg-2">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Careers</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </div>
+        <div class="col-6 col-lg-2">
+          <h4>Legal</h4>
+          <ul>
+            <li><a href="#">Privacy</a></li>
+            <li><a href="#">Terms</a></li>
+            <li><a href="#">Security</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="foot-bottom">
+        <span>&copy; 2026 NOVA. All rights reserved.</span>
+        <div class="socials">
+          <a href="#" aria-label="X"><i class="bi bi-twitter-x"></i></a>
+          <a href="#" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+          <a href="#" aria-label="GitHub"><i class="bi bi-github"></i></a>
+        </div>
+        <span class="credit">Made by <strong>Muhammad Bilal Waris</strong></span>
+      </div>
+    </div>
+    <div class="foot-mark" aria-hidden="true">NOVA</div>
+  </footer>
+
+  <!-- Floating back-to-top (scroll progress ring ke saath) -->
+  <button type="button" class="fab-top" id="toTop" aria-label="Back to top">
+    <svg viewBox="0 0 48 48" aria-hidden="true">
+      <defs>
+        <linearGradient id="ringGrad" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stop-color="#7B61FF" />
+          <stop offset="1" stop-color="#FF9E6D" />
+        </linearGradient>
+      </defs>
+      <circle class="ring-bg" cx="24" cy="24" r="21" />
+      <circle class="ring" cx="24" cy="24" r="21" />
+    </svg>
+    <i class="bi bi-arrow-up"></i>
+  </button>
+
+  <!-- Libraries: order important hai (jQuery pehle, Bootstrap baad mein) -->
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.9/dist/lenis.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.1.0/dist/typed.umd.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11.1.14/swiper-bundle.min.js"></script>
+  <script src="js/main.js"></script>
+</body>
+
+</html>
