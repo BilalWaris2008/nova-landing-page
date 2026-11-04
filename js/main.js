@@ -284,11 +284,28 @@ $(function () {
   });
 
   safe('cta-footer', () => {
+    // Signup form: Formspree ko bhejta hai (form ke action URL par)
     $('#ctaForm').on('submit', function (e) {
       e.preventDefault();
-      const ok = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test($('#ctaEmail').val().trim());
-      $('#ctaMsg').text(ok ? 'Thanks! Check your inbox for your invite.' : 'Please enter a valid email address.').toggleClass('bad', !ok);
-      if (ok) this.reset();
+      const form = this, $msg = $('#ctaMsg'), $btn = $(form).find('button[type="submit"]');
+      const bad = (t) => $msg.text(t).addClass('bad');
+
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test($('#ctaEmail').val().trim())) return bad('Please enter a valid email address.');
+      if (form.action.includes('YOUR_FORM_ID')) {
+        console.warn('NOVA: Formspree URL abhi set nahi hua. index.html mein form ke action mein apna URL paste karein.');
+        return bad('Demo mode: the form is not connected yet.');
+      }
+
+      $btn.prop('disabled', true);
+      $msg.text('Sending...').removeClass('bad');
+      fetch(form.action, { method: 'POST', body: new FormData(form), headers: { Accept: 'application/json' } })
+        .then((res) => {
+          if (res.ok) { $msg.text('You are on the list. We will email you soon.').removeClass('bad'); form.reset(); }
+          else if (res.status === 429) bad('Too many tries. Please wait a minute and try again.');
+          else bad('Something went wrong. Please try again.');
+        })
+        .catch(() => bad('Network error. Please check your connection and try again.'))
+        .finally(() => $btn.prop('disabled', false));
     });
     $('.to-top').on('click', () => lenis.scrollTo('#home', { offset: 0 }));
 

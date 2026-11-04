@@ -577,8 +577,11 @@ GROUP BY day ORDER BY day;</code></pre>
           <div class="orb orb-4"></div>
           <h2 class="section-title">Your next meeting should start with the answer.</h2>
           <p class="section-sub mt-3">Connect your first data source in under a minute. No card needed.</p>
-          <form class="cta-form" id="ctaForm" novalidate>
-            <input type="email" id="ctaEmail" placeholder="you@company.com" aria-label="Work email" required>
+          <!-- Signup form: Formspree (emails seedha inbox mein) -->
+          <form class="cta-form" id="ctaForm" action="https://formspree.io/f/xkjjkvak" method="POST" novalidate>
+            <input autocomplete="off" type="email" name="email" id="ctaEmail" placeholder="you@company.com"
+              aria-label="Work email" required>
+            <input type="text" name="_gotcha" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
             <button type="submit" class="btn btn-nova magnetic">Start free</button>
           </form>
           <p class="cta-msg" id="ctaMsg" role="status" aria-live="polite"></p>

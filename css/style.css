@@ -1587,6 +1587,16 @@ label[for] {
     color: var(--apricot);
 }
 
+.hp {
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+}
+
+/* spam trap */
+
 .footer {
     padding-top: 5rem;
     border-top: 1px solid var(--line);
