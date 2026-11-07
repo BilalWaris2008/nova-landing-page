@@ -40,7 +40,7 @@
   <link href="https://cdn.jsdelivr.net/npm/swiper@11.1.14/swiper-bundle.min.css" rel="stylesheet">
   <link href="css/style.css" rel="stylesheet">
 
-  <!-- Vercel Web Analytics (sirf deployed site par chalta hai) -->
+  <!-- Vercel Web Analytics (only runs on the deployed site) -->
   <script>
     window.va = window.va || function () {
       (window.vaq = window.vaq || []).push(arguments);
@@ -97,7 +97,8 @@
             chart.</p>
           <div class="hero-cta">
             <a href="#pricing" class="btn btn-nova btn-lg magnetic">Start free</a>
-            <a href="#how" class="btn btn-ghost btn-lg"><i class="bi bi-play-circle me-2"></i>Watch the 2-min demo</a>
+            <button type="button" class="btn btn-ghost btn-lg" data-bs-toggle="modal" data-bs-target="#demoModal"><i
+                class="bi bi-play-circle me-2"></i>Watch the 30-sec demo</button>
           </div>
         </div>
       </div>
@@ -136,7 +137,7 @@
   </header>
 
   <main>
-    <!-- Step 2A: Logos marquee -->
+    <!-- Logos marquee -->
     <section class="logos">
       <p class="logos-title">Trusted by data teams at fast-growing companies</p>
       <div class="marquee">
@@ -165,7 +166,7 @@
       </div>
     </section>
 
-    <!-- Step 2B: Features bento grid -->
+    <!-- Features bento grid -->
     <section class="section" id="features">
       <div class="container">
         <div class="row align-items-end g-4 mb-5">
@@ -250,7 +251,7 @@
       </div>
     </section>
 
-    <!-- Step 3: How it works (pinned scroll) -->
+    <!-- How it works (pinned scroll) -->
     <section class="how" id="how">
       <div class="container">
         <div class="row align-items-center gy-5 gx-lg-5">
@@ -314,7 +315,7 @@ GROUP BY day ORDER BY day;</code></pre>
       </div>
     </section>
 
-    <!-- Step 4A: Stats -->
+    <!-- Stats -->
     <section class="stats">
       <div class="container">
         <div class="row g-0">
@@ -338,7 +339,7 @@ GROUP BY day ORDER BY day;</code></pre>
       </div>
     </section>
 
-    <!-- Step 4B: Product showcase (parallax) -->
+    <!-- Product showcase (parallax) -->
     <section class="showcase" id="showcase">
       <div class="container">
         <div class="text-center mx-auto mb-5" style="max-width: 40rem;">
@@ -370,7 +371,7 @@ GROUP BY day ORDER BY day;</code></pre>
       </div>
     </section>
 
-    <!-- Step 5A: Testimonials (Swiper) -->
+    <!-- Testimonials (Swiper slider) -->
     <section class="testimonials" id="stories">
       <div class="container">
         <div class="t-head">
@@ -432,7 +433,7 @@ GROUP BY day ORDER BY day;</code></pre>
       </div>
     </section>
 
-    <!-- Step 5B: Pricing -->
+    <!-- Pricing -->
     <section class="section pricing" id="pricing">
       <div class="container">
         <div class="text-center mx-auto mb-5" style="max-width: 38rem;">
@@ -496,7 +497,7 @@ GROUP BY day ORDER BY day;</code></pre>
       </div>
     </section>
 
-    <!-- Step 6A: FAQ -->
+    <!-- FAQ -->
     <section class="section faq" id="faq">
       <div class="container">
         <div class="row gy-5 gx-lg-5">
@@ -569,7 +570,7 @@ GROUP BY day ORDER BY day;</code></pre>
       </div>
     </section>
 
-    <!-- Step 6B: Final CTA -->
+    <!-- Final call to action -->
     <section class="cta">
       <div class="container">
         <div class="cta-box">
@@ -577,7 +578,7 @@ GROUP BY day ORDER BY day;</code></pre>
           <div class="orb orb-4"></div>
           <h2 class="section-title">Your next meeting should start with the answer.</h2>
           <p class="section-sub mt-3">Connect your first data source in under a minute. No card needed.</p>
-          <!-- Signup form: Formspree (emails seedha inbox mein) -->
+          <!-- Signup form: submissions are delivered to the site owner's inbox via Formspree -->
           <form class="cta-form" id="ctaForm" action="https://formspree.io/f/xkjjkvak" method="POST" novalidate>
             <input type="email" name="email" id="ctaEmail" placeholder="you@company.com" aria-label="Work email"
               required>
@@ -639,7 +640,88 @@ GROUP BY day ORDER BY day;</code></pre>
     <div class="foot-mark" aria-hidden="true">NOVA</div>
   </footer>
 
-  <!-- Floating back-to-top (scroll progress ring ke saath) -->
+  <!-- Demo video popup (animation built with HTML and a GSAP timeline) -->
+  <div class="modal fade" id="demoModal" tabindex="-1" aria-labelledby="demoTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content demo">
+        <h2 class="visually-hidden" id="demoTitle">NOVA product demo</h2>
+        <button type="button" class="demo-close" data-bs-dismiss="modal" aria-label="Close demo"><i
+            class="bi bi-x-lg"></i></button>
+
+        <div class="demo-screen">
+          <div class="scene s1">
+            <p class="scene-cap">Connect your data in under a minute</p>
+            <ul class="d-sources">
+              <li class="d-src"><i class="bi bi-database"></i><span>Warehouse</span><em>Connected</em></li>
+              <li class="d-src"><i class="bi bi-stripe"></i><span>Billing</span><em>Connected</em></li>
+              <li class="d-src"><i class="bi bi-github"></i><span>Product events</span><em>Connected</em></li>
+            </ul>
+            <p class="d-note">4.2M rows indexed in 38 seconds</p>
+          </div>
+
+          <div class="scene s2">
+            <p class="scene-cap">Ask a question in plain English</p>
+            <div class="ask"><i class="bi bi-stars"></i><span id="dTyped"></span></div>
+            <pre
+              class="code d-code"><code><span class="d-ln">SELECT day, COUNT(*) AS signups</span><span class="d-ln">FROM users</span><span class="d-ln">WHERE day &gt;= CURRENT_DATE - 14</span><span class="d-ln">GROUP BY day ORDER BY day;</span></code></pre>
+          </div>
+
+          <div class="scene s3">
+            <p class="scene-cap">NOVA finds the cause and draws the chart</p>
+            <svg class="d-chart" viewBox="0 0 600 150" aria-hidden="true">
+              <defs>
+                <linearGradient id="dArea" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0" stop-color="#7B61FF" stop-opacity=".4" />
+                  <stop offset="1" stop-color="#7B61FF" stop-opacity="0" />
+                </linearGradient>
+                <linearGradient id="dLine" x1="0" x2="1">
+                  <stop offset="0" stop-color="#7B61FF" />
+                  <stop offset="1" stop-color="#FF9E6D" />
+                </linearGradient>
+              </defs>
+              <path class="d-area" fill="url(#dArea)"
+                d="M0 40 C60 36 100 50 160 44 S260 30 320 36 S400 60 430 106 S520 116 600 122 L600 150 L0 150 Z" />
+              <path class="d-line" pathLength="1"
+                d="M0 40 C60 36 100 50 160 44 S260 30 320 36 S400 60 430 106 S520 116 600 122" />
+            </svg>
+            <p class="d-insight"><i class="bi bi-lightning-charge-fill"></i><span>Signups fell 12% on Tuesday. Checkout
+                slowed down after the 4:10 pm release.</span></p>
+          </div>
+
+          <div class="scene s4">
+            <p class="scene-cap">Share the answer in one click</p>
+            <div class="d-slack">
+              <span class="avatar">N</span>
+              <div>
+                <strong>NOVA <small>just now</small></strong>
+                <p>Signups fell 12% on Tuesday. Cause: checkout slowed down after the 4:10 pm release.</p>
+                <div class="d-react"><span>&#128064; 3</span><span>&#9989; 2</span></div>
+              </div>
+            </div>
+            <p class="d-sent"><i class="bi bi-check-circle-fill me-2"></i>Sent to #growth</p>
+          </div>
+
+          <div class="scene s5">
+            <span class="logo-dot"></span>
+            <p class="scene-cap">Ask your data why.</p>
+            <p class="d-note">Connect your first source in under a minute.</p>
+            <button type="button" class="btn btn-nova btn-lg" id="demoCta">Start free</button>
+          </div>
+        </div>
+
+        <div class="demo-controls">
+          <button type="button" id="demoPlay" aria-label="Play or pause"><i class="bi bi-play-fill"></i></button>
+          <div class="demo-progress" id="demoProgress" role="slider" tabindex="0" aria-label="Demo progress"><i></i>
+          </div>
+          <span id="demoTime">0:00 / 0:33</span>
+          <button type="button" id="demoRestart" aria-label="Restart demo"><i
+              class="bi bi-arrow-counterclockwise"></i></button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Floating back-to-top button with scroll progress ring -->
   <button type="button" class="fab-top" id="toTop" aria-label="Back to top">
     <svg viewBox="0 0 48 48" aria-hidden="true">
       <defs>
@@ -654,7 +736,7 @@ GROUP BY day ORDER BY day;</code></pre>
     <i class="bi bi-arrow-up"></i>
   </button>
 
-  <!-- Libraries: order important hai (jQuery pehle, Bootstrap baad mein) -->
+  <!-- Libraries (order matters: jQuery must load before Bootstrap) -->
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>

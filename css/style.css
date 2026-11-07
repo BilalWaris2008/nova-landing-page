@@ -1,4 +1,4 @@
-/* ===== NOVA - Step 1: base, preloader, navbar, hero ===== */
+/* ===== NOVA: base, preloader, navbar, hero ===== */
 :root {
     --ink: #070A1B;
     --ink-2: #0E1230;
@@ -34,7 +34,7 @@ body {
     font-family: 'Manrope', sans-serif;
     -webkit-font-smoothing: antialiased;
     overflow-x: hidden;
-    /* purane browsers ke liye */
+    /* fallback for older browsers */
     overflow-x: clip;
 }
 
@@ -55,7 +55,7 @@ h3,
     outline-offset: 3px;
 }
 
-/* Cursor pointer: sirf clickable cheezon par */
+/* Pointer cursor on clickable elements only */
 a,
 button,
 .btn,
@@ -507,7 +507,7 @@ label[for] {
     margin-top: .15rem;
 }
 
-/* ===== Step 2: logos marquee + features bento ===== */
+/* ===== Logos marquee + features bento ===== */
 .logos {
     padding: 1rem 0 3rem;
     text-align: center;
@@ -777,7 +777,7 @@ label[for] {
     margin-bottom: 1rem;
 }
 
-/* ===== Step 3: How it works ===== */
+/* ===== How it works ===== */
 .how {
     padding: 5rem 0 7rem;
 }
@@ -975,7 +975,7 @@ label[for] {
     font-size: .92rem;
 }
 
-/* ===== Step 4: stats + product showcase ===== */
+/* ===== Stats + product showcase ===== */
 .stats {
     padding: 2rem 0 5rem;
 }
@@ -1010,7 +1010,7 @@ label[for] {
     overflow-x: clip;
 }
 
-/* glow neeche se kate nahi */
+/* keeps the glow from being cut off at the bottom */
 .showcase-stage {
     position: relative;
     max-width: 980px;
@@ -1150,7 +1150,7 @@ label[for] {
     }
 }
 
-/* ===== Step 5: testimonials + pricing ===== */
+/* ===== Testimonials + pricing ===== */
 .testimonials {
     padding: 0 0 7rem;
     overflow: hidden;
@@ -1415,7 +1415,7 @@ label[for] {
     margin-top: auto;
 }
 
-/* ===== Step 6: FAQ, CTA, footer ===== */
+/* ===== FAQ, CTA, footer ===== */
 .link-line {
     color: var(--text);
     text-decoration: underline;
@@ -1595,7 +1595,7 @@ label[for] {
     opacity: 0;
 }
 
-/* spam trap */
+/* honeypot field: hidden spam trap */
 
 .footer {
     padding-top: 5rem;
@@ -1998,6 +1998,368 @@ label[for] {
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
+}
+
+/* ===== Demo video modal ===== */
+.modal-backdrop {
+    --bs-backdrop-bg: #02030c;
+    --bs-backdrop-opacity: .82;
+}
+
+#demoModal .modal-dialog {
+    /* width is capped so the whole player (screen + controls) always fits the viewport height */
+    max-width: min(960px, calc((100vh - 9rem) * 16 / 9));
+    max-width: min(960px, calc((100dvh - 9rem) * 16 / 9));
+}
+
+#demoModal .demo {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid var(--line);
+    border-radius: 24px;
+    background: var(--ink-2);
+    box-shadow: 0 40px 120px -30px rgba(123, 97, 255, .55);
+}
+
+.demo-close {
+    position: absolute;
+    top: .8rem;
+    right: .8rem;
+    z-index: 5;
+    display: grid;
+    place-items: center;
+    width: 40px;
+    height: 40px;
+    border: 1px solid var(--line);
+    border-radius: 50%;
+    background: rgba(7, 10, 27, .7);
+    color: #fff;
+    transition: background .3s;
+}
+
+.demo-close:hover {
+    background: rgba(123, 97, 255, .4);
+}
+
+.demo-screen {
+    position: relative;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    background: radial-gradient(ellipse at 15% 0%, rgba(123, 97, 255, .35), transparent 60%), radial-gradient(ellipse at 95% 100%, rgba(255, 158, 109, .18), transparent 55%), var(--ink);
+}
+
+.scene {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: clamp(1.2rem, 5vw, 3.5rem);
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.scene-cap {
+    margin: 0 0 1.4rem;
+    color: #fff;
+    font: 700 clamp(1.3rem, 3.2vw, 2.2rem)/1.15 'Sora', sans-serif;
+    letter-spacing: -.03em;
+}
+
+.d-sources {
+    display: grid;
+    gap: .7rem;
+    max-width: 30rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.d-src {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: .8rem 1rem;
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    background: rgba(255, 255, 255, .05);
+}
+
+.d-src .bi {
+    font-size: 1.2rem;
+}
+
+.d-src span {
+    flex: 1;
+    font-weight: 600;
+}
+
+.d-src em {
+    color: var(--mint);
+    font-size: .88rem;
+    font-style: normal;
+}
+
+.d-note {
+    margin: 1.2rem 0 0;
+    color: var(--muted);
+}
+
+.scene .ask,
+.scene .code {
+    max-width: 34rem;
+}
+
+.d-code {
+    margin: 0;
+}
+
+.d-ln {
+    display: block;
+}
+
+.d-chart {
+    display: block;
+    width: 100%;
+    max-width: 34rem;
+    height: auto;
+}
+
+.d-line {
+    fill: none;
+    stroke: url(#dLine);
+    stroke-width: 4;
+    stroke-linecap: round;
+    stroke-dasharray: 1;
+}
+
+.d-insight {
+    display: flex;
+    gap: .6rem;
+    max-width: 34rem;
+    margin: 1rem 0 0;
+    padding: .8rem 1rem;
+    border: 1px solid rgba(123, 97, 255, .35);
+    border-radius: 12px;
+    background: rgba(123, 97, 255, .14);
+}
+
+.d-insight .bi {
+    margin-top: .15rem;
+    color: var(--apricot);
+}
+
+.d-slack {
+    display: flex;
+    gap: .9rem;
+    max-width: 34rem;
+    padding: 1.1rem 1.2rem;
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    background: var(--ink);
+}
+
+.d-slack small {
+    margin-left: .5rem;
+    color: var(--muted);
+    font-weight: 400;
+}
+
+.d-slack p {
+    margin: .3rem 0 .7rem;
+    color: #C5C9E6;
+    line-height: 1.5;
+}
+
+.d-react {
+    display: flex;
+    gap: .5rem;
+}
+
+.d-react span {
+    padding: .2rem .65rem;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, .05);
+    font-size: .85rem;
+}
+
+.d-sent {
+    margin: 1rem 0 0;
+    color: var(--mint);
+}
+
+.s5 {
+    align-items: center;
+    text-align: center;
+}
+
+.s5 .logo-dot {
+    width: 28px;
+    height: 28px;
+    margin-bottom: 1.2rem;
+}
+
+.s5 .btn {
+    margin-top: 1.4rem;
+    pointer-events: auto;
+}
+
+.demo-controls {
+    display: flex;
+    align-items: center;
+    gap: .8rem;
+    padding: .8rem 1.1rem;
+    border-top: 1px solid var(--line);
+}
+
+.demo-controls button {
+    display: grid;
+    flex: none;
+    place-items: center;
+    width: 40px;
+    height: 40px;
+    border: 1px solid var(--line);
+    border-radius: 50%;
+    background: rgba(255, 255, 255, .05);
+    color: #fff;
+    transition: background .3s;
+}
+
+.demo-controls button:hover {
+    background: rgba(123, 97, 255, .35);
+}
+
+.demo-progress {
+    position: relative;
+    flex: 1;
+    height: 20px;
+    cursor: pointer;
+}
+
+.demo-progress::before,
+.demo-progress i {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 7px;
+    height: 6px;
+    border-radius: 99px;
+}
+
+.demo-progress::before {
+    background: rgba(255, 255, 255, .12);
+}
+
+.demo-progress i {
+    background: var(--grad);
+    transform-origin: left;
+    transform: scaleX(0);
+}
+
+#demoTime {
+    flex: none;
+    color: var(--muted);
+    font-size: .82rem;
+    font-variant-numeric: tabular-nums;
+}
+
+@media (max-width: 575px) {
+    .demo-screen {
+        aspect-ratio: 4 / 5;
+        max-height: calc(100vh - 7rem);
+        max-height: calc(100dvh - 7rem);
+    }
+
+    .scene {
+        padding: 1.2rem;
+    }
+
+    .d-src {
+        padding: .6rem .8rem;
+    }
+
+    .scene-cap {
+        margin-bottom: 1rem;
+    }
+}
+
+/* Short screens (small laptops, landscape phones): compact demo layout */
+@media (max-height: 520px) {
+    .scene {
+        padding: .7rem 1.1rem;
+    }
+
+    .scene-cap {
+        margin-bottom: .5rem;
+        font-size: 1rem;
+    }
+
+    .d-sources {
+        gap: .3rem;
+    }
+
+    .d-src {
+        padding: .3rem .7rem;
+        font-size: .8rem;
+    }
+
+    .d-note {
+        margin-top: .4rem;
+        font-size: .78rem;
+    }
+
+    .scene .ask {
+        min-height: 0;
+        margin-bottom: .5rem;
+        padding: .35rem .7rem;
+        font-size: .8rem;
+    }
+
+    .scene .code {
+        padding: .5rem .7rem;
+        font-size: .7rem;
+        line-height: 1.5;
+    }
+
+    .d-chart {
+        max-width: 20rem;
+    }
+
+    .d-insight,
+    .d-slack {
+        padding: .5rem .7rem;
+        font-size: .78rem;
+    }
+
+    .d-slack p {
+        margin: .2rem 0 .4rem;
+    }
+
+    .d-sent {
+        margin-top: .5rem;
+        font-size: .8rem;
+    }
+
+    .s5 .btn {
+        margin-top: .6rem;
+        padding: .4rem 1.1rem;
+        font-size: .9rem;
+    }
+
+    .s5 .logo-dot {
+        margin-bottom: .5rem;
+    }
+
+    .demo-controls {
+        padding: .5rem .9rem;
+    }
+
+    .demo-controls button {
+        width: 34px;
+        height: 34px;
+    }
 }
 
 /* ----- Responsive + reduced motion ----- */

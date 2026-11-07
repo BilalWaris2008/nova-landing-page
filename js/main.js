@@ -1,22 +1,22 @@
-/* ===== NOVA - Step 1: smooth scroll, preloader, hero sequence ===== */
+/* ===== NOVA: smooth scroll, preloader, animations, interactions ===== */
 $(function () {
-  // Failsafe: JS kisi wajah se atak jaye to 5s baad preloader hat jaye
+  // Failsafe: remove the preloader after 5s even if something below fails
   setTimeout(() => $('#preloader').remove(), 5000);
 
-  // Check: saari libraries load hui hain ya nahi
+  // Check that the required libraries have loaded
   const missing = ['gsap', 'ScrollTrigger'].filter((n) => typeof window[n] === 'undefined');
   if (missing.length) {
-    console.error('NOVA: zaroori libraries load nahi hui ->', missing.join(', '));
+    console.error('NOVA: required libraries failed to load ->', missing.join(', '));
     $('#preloader, .cursor').remove();
     return;
   }
-  // Optional libraries: na milein to page fallback ke saath chalta rahega
+  // Optional libraries: the page keeps working with fallbacks if they are missing
   ['Lenis', 'Typed', 'VanillaTilt'].forEach((n) => {
-    if (typeof window[n] === 'undefined') console.warn('NOVA: optional library load nahi hui (fallback chalega) ->', n);
+    if (typeof window[n] === 'undefined') console.warn('NOVA: optional library not loaded (using fallback) ->', n);
   });
 
-  // Har section alag try/catch mein: ek fail ho to baaki chalte rahein
-  const safe = (name, fn) => { try { fn(); } catch (e) { console.error('NOVA [' + name + '] mein error:', e); } };
+  // Each section runs in its own try/catch so one failure cannot break the rest
+  const safe = (name, fn) => { try { fn(); } catch (e) { console.error('NOVA [' + name + '] error:', e); } };
 
   const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const fine = window.matchMedia('(pointer: fine)').matches;
@@ -35,11 +35,11 @@ $(function () {
   lenis.on('scroll', ScrollTrigger.update);
   gsap.ticker.add((t) => lenis.raf(t * 1000));
   gsap.ticker.lagSmoothing(0);
-  lenis.stop(); // preloader ke dauran scroll band
+  lenis.stop(); // lock scrolling while the preloader is visible
 
   $('a[href^="#"]').on('click', function (e) {
     const id = $(this).attr('href');
-    if (id === '#') e.preventDefault(); // placeholder links page ko upar na uchhalein
+    if (id === '#') e.preventDefault(); // placeholder links should not jump to the top
     if (id.length > 1 && $(id).length) {
       e.preventDefault();
       lenis.scrollTo(id, { offset: -70 });
@@ -52,7 +52,7 @@ $(function () {
   $(window).on('scroll', () => $('#nav').toggleClass('scrolled', window.scrollY > 40));
 
   /* ---------- Hero text split ---------- */
-  // Headline ko words aur letters mein todna (apna chhota splitter, library ki zaroorat nahi)
+  // Split the headline into words and letters (small custom splitter, no library needed)
   $('.hero-title').each(function () {
     const words = $(this).text().trim().split(/\s+/);
     $(this).empty().attr('aria-label', words.join(' '));
@@ -74,7 +74,7 @@ $(function () {
     gsap.set('.insight', { opacity: 0, y: 12 });
   }
 
-  /* ---------- Hero sequence (page ka ek hi bada moment) ---------- */
+  /* ---------- Hero sequence (the main intro moment) ---------- */
   function drawChart() {
     gsap.timeline()
       .to('#chartLine', { strokeDashoffset: 0, duration: 1.8, ease: 'power2.inOut' })
@@ -87,7 +87,7 @@ $(function () {
       new Typed('#typed', { strings: [QUESTION], typeSpeed: 38, onComplete: drawChart });
       return;
     }
-    let n = 0; // Fallback: Typed.js na ho to apna typing effect
+    let n = 0; // Fallback typing effect when Typed.js is not available
     const timer = setInterval(() => {
       $('#typed').text(QUESTION.slice(0, ++n));
       if (n >= QUESTION.length) { clearInterval(timer); drawChart(); }
@@ -122,22 +122,22 @@ $(function () {
       }
     });
 
-    /* Parallax: scroll par mockup aur orbs halka sa move */
+    /* Parallax: the mockup and orbs drift slightly while scrolling */
     gsap.to('.mock-wrap', { yPercent: -8, ease: 'none', scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true } });
     gsap.to('.orb-1', { y: 140, ease: 'none', scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true } });
   }
 
-  /* ---------- Step 2: Bento grid animations ---------- */
+  /* ---------- Bento grid animations ---------- */
   safe('bento', () => {
     if (reduce) return;
-    // Cards stagger mein aate hain
+    // Cards fade in one after another
     gsap.set('.bento-card', { opacity: 0, y: 50 });
     ScrollTrigger.batch('.bento-card', {
       start: 'top 88%', once: true,
       onEnter: (batch) => gsap.to(batch, { opacity: 1, y: 0, duration: 1, stagger: 0.12, ease: 'power3.out' })
     });
 
-    // Chat: sawal, phir jawab, phir sparkline draw
+    // Chat: question, then answer, then the sparkline is drawn
     gsap.set('.msg-q, .msg-a', { opacity: 0, y: 14 });
     gsap.set('.spark path', { strokeDashoffset: 1 });
     gsap.timeline({ scrollTrigger: { trigger: '.chat', start: 'top 80%', once: true } })
@@ -145,15 +145,15 @@ $(function () {
       .to('.msg-a', { opacity: 1, y: 0, duration: 0.7, ease: 'power3.out' }, '+=0.5')
       .to('.spark path', { strokeDashoffset: 0, duration: 1.4, ease: 'power2.inOut' }, '-=0.2');
 
-    // Driver bars left se fill hoti hain
+    // Driver bars fill from the left
     gsap.from('.bar i', {
       scaleX: 0, duration: 1.2, stagger: 0.15, ease: 'power3.out',
       scrollTrigger: { trigger: '.drivers', start: 'top 85%', once: true }
     });
   });
 
-  /* ---------- Step 3: How it works (pinned scroll) ---------- */
-  // Sirf desktop par aur jab reduced-motion off ho. Mobile par steps simple list rehte hain.
+  /* ---------- How it works (pinned scroll) ---------- */
+  // Desktop only, and only when reduced motion is off. On mobile the steps stay a simple list.
   safe('how-it-works', () => gsap.matchMedia().add('(min-width: 992px) and (prefers-reduced-motion: no-preference)', () => {
     const $how = $('#how');
     const $panels = $how.find('.panel');
@@ -184,7 +184,7 @@ $(function () {
       }
     });
 
-    return () => { // media change par safai
+    return () => { // cleanup when the media query stops matching
       $how.removeClass('is-pinned');
       gsap.set($panels, { clearProps: 'all' });
       gsap.set('.rail i', { clearProps: 'all' });
@@ -192,9 +192,9 @@ $(function () {
     };
   }));
 
-  /* ---------- Step 4: Stats counters + product showcase parallax ---------- */
+  /* ---------- Stats counters + product showcase parallax ---------- */
   safe('stats-showcase', () => {
-    if (reduce) return; // HTML mein final numbers pehle se likhe hain
+    if (reduce) return; // the final numbers are already written in the HTML
 
     $('.stat strong').each(function () {
       const $el = $(this);
@@ -212,14 +212,14 @@ $(function () {
       });
     });
 
-    // Dashboard flat hota hai jaise hi screen par aata hai
+    // The dashboard flattens out as it scrolls into view
     gsap.set('.showcase-main', { transformPerspective: 1400 });
     gsap.fromTo('.showcase-main', { rotateX: 14, scale: 0.92 }, {
       rotateX: 0, scale: 1, ease: 'none',
       scrollTrigger: { trigger: '.showcase-stage', start: 'top 90%', end: 'top 35%', scrub: true }
     });
 
-    // Floating cards alag alag speed se uthte hain (depth ka ehsaas)
+    // Floating cards move at different speeds to create depth
     $('.float-card').each(function () {
       gsap.to(this, {
         y: -parseFloat($(this).attr('data-speed')) * 160, ease: 'none',
@@ -233,9 +233,9 @@ $(function () {
     });
   });
 
-  /* ---------- Step 5: Testimonials slider + pricing toggle ---------- */
+  /* ---------- Testimonials slider + pricing toggle ---------- */
   safe('testimonials', () => {
-    if (!window.Swiper) { console.warn('NOVA: Swiper load nahi hua, slider scroll-snap fallback par chalega'); return; }
+    if (!window.Swiper) { console.warn('NOVA: Swiper did not load, the slider falls back to scroll-snap'); return; }
     const offset = () => Math.max(16, ($(window).width() - $('.t-head').outerWidth()) / 2);
     const slider = new Swiper('.swiper-t', {
       slidesPerView: 'auto', spaceBetween: 20, speed: 700, grabCursor: true, rewind: true,
@@ -270,9 +270,9 @@ $(function () {
     });
   });
 
-  /* ---------- Step 6: FAQ, CTA, footer ---------- */
+  /* ---------- FAQ, CTA, footer ---------- */
   safe('faq', () => {
-    // Accordion khulne/band hone se page ki height badalti hai, isliye positions refresh
+    // Opening or closing an item changes the page height, so refresh scroll positions
     const list = document.getElementById('faqList');
     ['shown.bs.collapse', 'hidden.bs.collapse'].forEach((ev) => list.addEventListener(ev, () => ScrollTrigger.refresh()));
     if (reduce) return;
@@ -284,7 +284,7 @@ $(function () {
   });
 
   safe('cta-footer', () => {
-    // Signup form: Formspree ko bhejta hai (form ke action URL par)
+    // Signup form: posts to Formspree (the form's action URL)
     $('#ctaForm').on('submit', function (e) {
       e.preventDefault();
       const form = this, $msg = $('#ctaMsg'), $btn = $(form).find('button[type="submit"]');
@@ -292,7 +292,7 @@ $(function () {
 
       if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test($('#ctaEmail').val().trim())) return bad('Please enter a valid email address.');
       if (form.action.includes('YOUR_FORM_ID')) {
-        console.warn('NOVA: Formspree URL abhi set nahi hua. index.html mein form ke action mein apna URL paste karein.');
+        console.warn('NOVA: the Formspree URL is not set. Put your form URL in the form action in index.html.');
         return bad('Demo mode: the form is not connected yet.');
       }
 
@@ -310,18 +310,104 @@ $(function () {
     $('.to-top').on('click', () => lenis.scrollTo('#home', { offset: 0 }));
 
     if (reduce) return;
-    // CTA box scroll ke saath bada hota hai aur corners khulte hain
+    // The CTA box grows and its corners tighten as it scrolls into view
     gsap.fromTo('.cta-box', { scale: 0.92, borderRadius: 48 }, {
       scale: 1, borderRadius: 32, ease: 'none',
       scrollTrigger: { trigger: '.cta-box', start: 'top 95%', end: 'top 45%', scrub: true }
     });
   });
 
+  /* ---------- Demo video (HTML animation driven by a GSAP timeline) ---------- */
+  safe('demo', () => {
+    const el = document.getElementById('demoModal');
+    if (!el) return;
+    const Q = 'Why did signups drop on Tuesday?';
+    const typed = { n: 0 };
+    const $time = $('#demoTime'), $bar = $('#demoProgress i'), $icon = $('#demoPlay i');
+    const fmt = (s) => Math.floor(s / 60) + ':' + String(Math.floor(s % 60)).padStart(2, '0');
+    let iconCls = '';
+    const syncIcon = () => {
+      const c = 'bi ' + (tl.progress() === 1 ? 'bi-arrow-repeat' : tl.paused() ? 'bi-play-fill' : 'bi-pause-fill');
+      if (c !== iconCls) { iconCls = c; $icon.attr('class', c); }
+    };
+    const tl = gsap.timeline({
+      paused: true, defaults: { ease: 'power3.out' },
+      onUpdate: () => {
+        $bar.css('transform', 'scaleX(' + tl.progress() + ')');
+        $time.text(fmt(tl.time()) + ' / ' + fmt(tl.duration()));
+        syncIcon();
+      }
+    });
+    const show = (sel, at, dur = 0.6) => tl.fromTo(sel, { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: dur }, at);
+    const hide = (sel, at) => tl.to(sel, { autoAlpha: 0, y: -24, duration: 0.5, ease: 'power2.in' }, at);
+
+    // Scene 1 (0s): connect data sources
+    show('.s1', 0.2);
+    tl.fromTo('.d-src', { autoAlpha: 0, x: -30 }, { autoAlpha: 1, x: 0, duration: 0.6, stagger: 0.5 }, 0.9)
+      .fromTo('.d-src em', { autoAlpha: 0, scale: 0.6 }, { autoAlpha: 1, scale: 1, duration: 0.4, stagger: 0.5 }, 1.5)
+      .fromTo('.d-note', { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.6 }, 3.2);
+    hide('.s1', 6.4);
+
+    // Scene 2 (7s): type a question and generate the query
+    show('.s2', 7);
+    tl.fromTo('.s2 .ask', { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.5 }, 7.6)
+      .fromTo(typed, { n: 0 }, { n: Q.length, duration: 2.2, ease: 'none', onUpdate: () => $('#dTyped').text(Q.slice(0, Math.round(typed.n))) }, 8.2)
+      .fromTo('.d-code', { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.4 }, 10.6)
+      .fromTo('.d-ln', { autoAlpha: 0, x: -12 }, { autoAlpha: 1, x: 0, duration: 0.4, stagger: 0.35 }, 10.9);
+    hide('.s2', 14.4);
+
+    // Scene 3 (15s): draw the chart and show the cause
+    show('.s3', 15);
+    tl.fromTo('.d-line', { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: 2.2, ease: 'power2.inOut' }, 15.8)
+      .fromTo('.d-area', { autoAlpha: 0 }, { autoAlpha: 1, duration: 1.2 }, 16.6)
+      .fromTo('.d-insight', { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0, duration: 0.7 }, 18.6);
+    hide('.s3', 21.4);
+
+    // Scene 4 (22s): share with the team
+    show('.s4', 22);
+    tl.fromTo('.d-slack', { autoAlpha: 0, y: 30, scale: 0.96 }, { autoAlpha: 1, y: 0, scale: 1, duration: 0.7 }, 22.7)
+      .fromTo('.d-react span', { autoAlpha: 0, scale: 0.5 }, { autoAlpha: 1, scale: 1, duration: 0.4, stagger: 0.3, ease: 'back.out(2)' }, 24)
+      .fromTo('.d-sent', { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.5 }, 25);
+    hide('.s4', 27.4);
+
+    // Scene 5 (28s): end card
+    show('.s5', 28, 0.8);
+    tl.set({}, {}, 33);
+
+    // Controls
+    const play = () => { if (tl.progress() === 1) tl.time(0, false); tl.play(); syncIcon(); };
+    $('#demoPlay').on('click', () => { if (tl.paused() || tl.progress() === 1) play(); else { tl.pause(); syncIcon(); } });
+    $('#demoRestart').on('click', () => { tl.time(0, false); play(); });
+    $('#demoProgress')
+      .on('click', function (e) {
+        const r = this.getBoundingClientRect();
+        tl.progress(Math.min(1, Math.max(0, (e.clientX - r.left) / r.width)), false);
+      })
+      .on('keydown', (e) => {
+        if (e.key === 'ArrowRight') tl.time(Math.min(tl.duration(), tl.time() + 2), false);
+        if (e.key === 'ArrowLeft') tl.time(Math.max(0, tl.time() - 2), false);
+      });
+
+    // Modal open/close
+    let goCta = false;
+    el.addEventListener('shown.bs.modal', () => {
+      lenis.stop();
+      tl.time(0, false);
+      if (reduce) { tl.time(tl.duration(), false); syncIcon(); } else play(); // reduced motion: show the end card, playback starts when Play is pressed
+    });
+    el.addEventListener('hidden.bs.modal', () => {
+      tl.pause(); tl.time(0, false); syncIcon();
+      lenis.start();
+      if (goCta) { goCta = false; lenis.scrollTo('.cta', { offset: -80 }); }
+    });
+    $('#demoCta').on('click', () => { goCta = true; bootstrap.Modal.getInstance(el).hide(); });
+  });
+
   /* ---------- Floating back-to-top (progress ring) ---------- */
   safe('back-to-top', () => {
     const $btn = $('#toTop');
     const ring = $btn.find('.ring')[0];
-    const C = 132; // circle ki lambai (2 * pi * 21)
+    const C = 132; // circle circumference (2 * pi * 21)
     const update = () => {
       const max = document.documentElement.scrollHeight - window.innerHeight;
       const p = max > 0 ? Math.min(1, window.scrollY / max) : 0;
@@ -333,7 +419,7 @@ $(function () {
     $btn.on('click', () => lenis.scrollTo('#home', { offset: 0 }));
   });
 
-  // Fonts/layout settle hone ke baad positions dobara calculate
+  // Recalculate positions once fonts and layout have settled
   $(window).on('load', () => ScrollTrigger.refresh());
 
   /* ---------- Desktop-only effects ---------- */
@@ -349,7 +435,7 @@ $(function () {
       .on('mouseenter', () => $('.cursor').addClass('big'))
       .on('mouseleave', () => $('.cursor').removeClass('big'));
 
-    // Bento card spotlight: glow cursor ke saath chalti hai
+    // Bento card spotlight: the glow follows the cursor
     $('.bento-card').on('mousemove', function (e) {
       const r = this.getBoundingClientRect();
       this.style.setProperty('--mx', e.clientX - r.left + 'px');
