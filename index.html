@@ -433,6 +433,132 @@ GROUP BY day ORDER BY day;</code></pre>
       </div>
     </section>
 
+    <!-- ROI calculator -->
+    <section class="section roi" id="roi">
+      <div class="container">
+        <div class="row align-items-center gy-5 gx-lg-5">
+          <div class="col-lg-5">
+            <h2 class="section-title">See how much time your team could get back.</h2>
+            <p class="section-sub mt-3">Move the sliders to match your team. The numbers update as you go.</p>
+            <div class="roi-inputs">
+              <div class="roi-field">
+                <div class="roi-row"><label for="roiTeam">People who ask data questions</label><output id="roiTeamOut"
+                    for="roiTeam">8</output></div>
+                <input type="range" id="roiTeam" min="1" max="50" value="8" style="--p:14.29%">
+              </div>
+              <div class="roi-field">
+                <div class="roi-row"><label for="roiAsk">Questions each person asks per week</label><output
+                    id="roiAskOut" for="roiAsk">4</output></div>
+                <input type="range" id="roiAsk" min="1" max="20" value="4" style="--p:15.79%">
+              </div>
+              <div class="roi-field">
+                <div class="roi-row"><label for="roiMins">Minutes to get one answer today</label><output id="roiMinsOut"
+                    for="roiMins">30 min</output></div>
+                <input type="range" id="roiMins" min="5" max="90" value="30" style="--p:29.41%">
+              </div>
+              <div class="roi-field">
+                <div class="roi-row"><label for="roiRate">Average cost of an hour of work</label><output id="roiRateOut"
+                    for="roiRate">$30</output></div>
+                <input type="range" id="roiRate" min="10" max="120" value="30" style="--p:18.18%">
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-7">
+            <div class="roi-card">
+              <p class="roi-label">Time saved every month</p>
+              <p class="roi-big"><b id="roiHours" data-v="66.9707">67</b><span>hours</span></p>
+              <p class="roi-value">Worth about <strong id="roiMoney" data-v="2009.1200">$2,009</strong> a month</p>
+              <div class="roi-bars">
+                <div class="roi-bar"><span>Today</span>
+                  <div class="track"><i id="barToday" style="--s:1"></i></div><b id="roiToday" data-v="69.2800">69 h</b>
+                </div>
+                <div class="roi-bar"><span>With NOVA</span>
+                  <div class="track"><i id="barNova" class="nova-bar" style="--s:0.0333"></i></div><b id="roiNova"
+                    data-v="2.3093">2 h</b>
+                </div>
+              </div>
+              <p class="roi-ratio" id="roiRatio">About 41× the cost of the Team plan</p>
+              <a href="#start" class="btn btn-nova btn-lg magnetic">Start free</a>
+              <p class="roi-note">Illustrative estimate. It assumes 4.33 weeks a month and that NOVA answers each
+                question in about a minute. The Team plan costs $49 a month.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Comparison table -->
+    <section class="section compare-section" id="compare">
+      <div class="container">
+        <div class="text-center mx-auto mb-5" style="max-width: 38rem;">
+          <h2 class="section-title">NOVA compared with how you work today.</h2>
+          <p class="section-sub mt-3">A plain look at what changes when you stop digging through spreadsheets and
+            dashboards.</p>
+        </div>
+        <div class="compare-wrap">
+          <table class="compare">
+            <caption class="visually-hidden">Comparison of NOVA, spreadsheets and traditional dashboards</caption>
+            <thead>
+              <tr>
+                <th scope="col"><span class="visually-hidden">Feature</span></th>
+                <th scope="col" class="nova">NOVA</th>
+                <th scope="col">Spreadsheets</th>
+                <th scope="col">Traditional dashboards</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Ask questions in plain English</th>
+                <td class="nova"><i class="bi bi-check-circle-fill mark yes" aria-hidden="true"></i><span
+                    class="visually-hidden">Yes. </span>Built in</td>
+                <td><i class="bi bi-x-circle-fill mark no" aria-hidden="true"></i><span class="visually-hidden">No.
+                  </span>Formulas required</td>
+                <td><i class="bi bi-dash-circle-fill mark part" aria-hidden="true"></i><span
+                    class="visually-hidden">Partly. </span>Only pre-built charts</td>
+              </tr>
+              <tr>
+                <th scope="row">Explains why a number moved</th>
+                <td class="nova"><i class="bi bi-check-circle-fill mark yes" aria-hidden="true"></i><span
+                    class="visually-hidden">Yes. </span>Automatically</td>
+                <td><i class="bi bi-x-circle-fill mark no" aria-hidden="true"></i><span class="visually-hidden">No.
+                  </span>Manual digging</td>
+                <td><i class="bi bi-x-circle-fill mark no" aria-hidden="true"></i><span class="visually-hidden">No.
+                  </span>Shows what, not why</td>
+              </tr>
+              <tr>
+                <th scope="row">Time to the first answer</th>
+                <td class="nova"><i class="bi bi-check-circle-fill mark yes" aria-hidden="true"></i><span
+                    class="visually-hidden">Yes. </span>About a minute</td>
+                <td><i class="bi bi-dash-circle-fill mark part" aria-hidden="true"></i><span
+                    class="visually-hidden">Partly. </span>Hours of copy and paste</td>
+                <td><i class="bi bi-dash-circle-fill mark part" aria-hidden="true"></i><span
+                    class="visually-hidden">Partly. </span>Days with an analyst</td>
+              </tr>
+              <tr>
+                <th scope="row">Easy for anyone on the team</th>
+                <td class="nova"><i class="bi bi-check-circle-fill mark yes" aria-hidden="true"></i><span
+                    class="visually-hidden">Yes. </span>No training needed</td>
+                <td><i class="bi bi-dash-circle-fill mark part" aria-hidden="true"></i><span
+                    class="visually-hidden">Partly. </span>Usually one expert</td>
+                <td><i class="bi bi-dash-circle-fill mark part" aria-hidden="true"></i><span
+                    class="visually-hidden">Partly. </span>Needs training</td>
+              </tr>
+              <tr>
+                <th scope="row">Data stays in your warehouse</th>
+                <td class="nova"><i class="bi bi-check-circle-fill mark yes" aria-hidden="true"></i><span
+                    class="visually-hidden">Yes. </span>Read only, never copied</td>
+                <td><i class="bi bi-x-circle-fill mark no" aria-hidden="true"></i><span class="visually-hidden">No.
+                  </span>Exported copies</td>
+                <td><i class="bi bi-dash-circle-fill mark part" aria-hidden="true"></i><span
+                    class="visually-hidden">Partly. </span>Depends on the tool</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
     <!-- Pricing -->
     <section class="section pricing" id="pricing">
       <div class="container">
@@ -571,7 +697,7 @@ GROUP BY day ORDER BY day;</code></pre>
     </section>
 
     <!-- Final call to action -->
-    <section class="cta">
+    <section class="cta" id="start">
       <div class="container">
         <div class="cta-box">
           <div class="orb orb-3"></div>

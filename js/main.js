@@ -233,6 +233,53 @@ $(function () {
     });
   });
 
+  /* ---------- ROI calculator + comparison table ---------- */
+  safe('roi', () => {
+    const WEEKS = 4.33, NOVA_MINUTES = 1, PLAN = 49; // weeks per month, minutes NOVA needs per answer, Team plan price
+    const $in = $('.roi input[type="range"]');
+    const shown = {}; // numbers currently on screen, so each change animates from the last value
+    const num = (v) => Math.round(v).toLocaleString('en-US');
+
+    const setNumber = (id, to, format) => {
+      const el = $('#' + id);
+      const o = shown[id] || (shown[id] = { v: parseFloat(el.attr('data-v')) || 0 });
+      if (reduce) { o.v = to; el.text(format(to)); return; }
+      gsap.to(o, { v: to, duration: 0.5, ease: 'power2.out', overwrite: true, onUpdate: () => el.text(format(o.v)) });
+    };
+
+    const render = () => {
+      const team = +$('#roiTeam').val(), ask = +$('#roiAsk').val(), mins = +$('#roiMins').val(), rate = +$('#roiRate').val();
+      const questions = team * ask * WEEKS;               // questions per month
+      const today = questions * mins / 60;                // hours per month today
+      const nova = Math.min(today, questions * NOVA_MINUTES / 60);
+      const saved = today - nova, money = saved * rate;
+
+      $('#roiTeamOut').text(team); $('#roiAskOut').text(ask); $('#roiMinsOut').text(mins + ' min'); $('#roiRateOut').text('$' + rate);
+      $in.each(function () {
+        const min = +this.min, max = +this.max;
+        this.style.setProperty('--p', ((+this.value - min) / (max - min) * 100) + '%');
+      });
+
+      setNumber('roiHours', saved, num);
+      setNumber('roiMoney', money, (v) => '$' + num(v));
+      setNumber('roiToday', today, (v) => num(v) + ' h');
+      setNumber('roiNova', nova, (v) => num(v) + ' h');
+      const novaScale = today > 0 ? Math.max(0.02, nova / today) : 0.02;
+      if (reduce) $('#barNova')[0].style.setProperty('--s', novaScale);
+      else gsap.to('#barNova', { scaleX: novaScale, duration: 0.5, ease: 'power2.out', overwrite: true });
+      const times = Math.round(money / PLAN);
+      $('#roiRatio').text(money < PLAN ? 'The free Starter plan is a good place to begin' : times > 100 ? 'More than 100\u00d7 the cost of the Team plan' : 'About ' + times + '\u00d7 the cost of the Team plan');
+    };
+    $in.on('input', render);
+
+    if (reduce) return;
+    gsap.set('.roi-card, .compare-wrap', { opacity: 0, y: 40 });
+    ScrollTrigger.batch('.roi-card, .compare-wrap', {
+      start: 'top 88%', once: true,
+      onEnter: (b) => gsap.to(b, { opacity: 1, y: 0, duration: 0.9, stagger: 0.12, ease: 'power3.out' })
+    });
+  });
+
   /* ---------- Testimonials slider + pricing toggle ---------- */
   safe('testimonials', () => {
     if (!window.Swiper) { console.warn('NOVA: Swiper did not load, the slider falls back to scroll-snap'); return; }

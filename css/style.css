@@ -2285,6 +2285,250 @@ label[for] {
     }
 }
 
+/* ===== ROI calculator + comparison table ===== */
+.roi-inputs {
+    display: grid;
+    gap: 1.7rem;
+    margin-top: 2.2rem;
+}
+
+.roi-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 1rem;
+    margin-bottom: .75rem;
+}
+
+.roi-row output {
+    font: 600 1rem 'Sora', sans-serif;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+}
+
+.roi input[type="range"] {
+    -webkit-appearance: none;
+    appearance: none;
+    display: block;
+    width: 100%;
+    height: 6px;
+    margin: 0;
+    border-radius: 99px;
+    outline: none;
+    cursor: pointer;
+    background: linear-gradient(90deg, var(--violet) var(--p, 50%), rgba(255, 255, 255, .14) var(--p, 50%));
+}
+
+.roi input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 22px;
+    height: 22px;
+    border: 0;
+    border-radius: 50%;
+    background: #fff;
+    box-shadow: 0 0 0 5px rgba(123, 97, 255, .35), 0 4px 14px rgba(0, 0, 0, .5);
+    transition: box-shadow .2s;
+}
+
+.roi input[type="range"]::-moz-range-thumb {
+    width: 22px;
+    height: 22px;
+    border: 0;
+    border-radius: 50%;
+    background: #fff;
+    box-shadow: 0 0 0 5px rgba(123, 97, 255, .35), 0 4px 14px rgba(0, 0, 0, .5);
+}
+
+.roi input[type="range"]::-moz-range-track {
+    background: transparent;
+}
+
+.roi input[type="range"]:hover::-webkit-slider-thumb,
+.roi input[type="range"]:active::-webkit-slider-thumb {
+    box-shadow: 0 0 0 8px rgba(123, 97, 255, .35), 0 4px 14px rgba(0, 0, 0, .5);
+}
+
+.roi input[type="range"]:focus-visible {
+    outline: 2px solid var(--apricot);
+    outline-offset: 8px;
+}
+
+.roi-card {
+    padding: clamp(1.5rem, 4vw, 2.6rem);
+    border: 1px solid var(--line);
+    border-radius: 28px;
+    background: linear-gradient(160deg, rgba(255, 255, 255, .06), rgba(255, 255, 255, .015));
+    box-shadow: 0 40px 100px -40px rgba(123, 97, 255, .5);
+}
+
+.roi-label {
+    margin: 0;
+    color: var(--muted);
+}
+
+.roi-big {
+    display: flex;
+    align-items: baseline;
+    gap: .8rem;
+    margin: .4rem 0 .6rem;
+}
+
+.roi-big b {
+    font: 700 clamp(3.6rem, 9vw, 6rem)/1 'Sora', sans-serif;
+    letter-spacing: -.05em;
+    font-variant-numeric: tabular-nums;
+}
+
+.roi-big span {
+    color: var(--muted);
+    font-size: 1.3rem;
+}
+
+.roi-value {
+    margin: 0 0 1.8rem;
+    font-size: 1.15rem;
+}
+
+.roi-value strong {
+    color: var(--mint);
+    font-variant-numeric: tabular-nums;
+}
+
+.roi-bars {
+    display: grid;
+    gap: .9rem;
+    margin-bottom: 1.6rem;
+}
+
+.roi-bar {
+    display: grid;
+    grid-template-columns: 5.5rem 1fr 4rem;
+    align-items: center;
+    gap: .9rem;
+    font-size: .92rem;
+}
+
+.roi-bar span {
+    color: var(--muted);
+}
+
+.roi-bar b {
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+}
+
+.roi-bar .track {
+    height: 10px;
+    overflow: hidden;
+    border-radius: 99px;
+    background: rgba(255, 255, 255, .08);
+}
+
+.roi-bar i {
+    display: block;
+    height: 100%;
+    border-radius: 99px;
+    background: rgba(255, 255, 255, .38);
+    transform-origin: left;
+    transform: scaleX(var(--s, 1));
+}
+
+.roi-bar i.nova-bar {
+    background: var(--grad);
+}
+
+.roi-ratio {
+    margin: 0 0 1.4rem;
+    color: var(--text);
+    font-weight: 600;
+}
+
+.roi-note {
+    margin: 1.4rem 0 0;
+    color: var(--muted);
+    font-size: .82rem;
+    line-height: 1.6;
+}
+
+.compare-wrap {
+    position: relative;
+    overflow-x: auto;
+    border: 1px solid var(--line);
+    border-radius: 24px;
+    background: linear-gradient(160deg, rgba(255, 255, 255, .045), rgba(255, 255, 255, .012));
+}
+
+.compare {
+    width: 100%;
+    min-width: 680px;
+    margin: 0;
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+.compare th,
+.compare td {
+    padding: 1.1rem 1.3rem;
+    border-bottom: 1px solid var(--line);
+    text-align: left;
+    vertical-align: middle;
+    color: #C5C9E6;
+}
+
+.compare thead th {
+    padding-top: 1.5rem;
+    color: #fff;
+    font: 600 1.02rem 'Sora', sans-serif;
+}
+
+.compare tbody th {
+    width: 31%;
+    color: var(--text);
+    font-weight: 600;
+}
+
+.compare tr:last-child>* {
+    border-bottom: 0;
+}
+
+.compare .nova {
+    background: rgba(123, 97, 255, .13);
+    color: #fff;
+}
+
+.compare thead .nova {
+    color: var(--apricot);
+}
+
+.compare .mark {
+    margin-right: .55rem;
+    font-size: 1.15rem;
+    vertical-align: -.12em;
+}
+
+.compare .yes {
+    color: var(--mint);
+}
+
+.compare .part {
+    color: var(--apricot);
+}
+
+.compare .no {
+    color: #FF8A8A;
+}
+
+@media (max-width: 767px) {
+    .compare tbody th {
+        position: sticky;
+        left: 0;
+        z-index: 1;
+        min-width: 9.5rem;
+        background: #0C1030;
+    }
+}
+
 /* Short screens (small laptops, landscape phones): compact demo layout */
 @media (max-height: 520px) {
     .scene {
