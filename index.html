@@ -497,61 +497,72 @@ GROUP BY day ORDER BY day;</code></pre>
             dashboards.</p>
         </div>
         <div class="compare-wrap">
-          <table class="compare">
+          <table class="compare" role="table">
             <caption class="visually-hidden">Comparison of NOVA, spreadsheets and traditional dashboards</caption>
-            <thead>
-              <tr>
-                <th scope="col"><span class="visually-hidden">Feature</span></th>
-                <th scope="col" class="nova">NOVA</th>
-                <th scope="col">Spreadsheets</th>
-                <th scope="col">Traditional dashboards</th>
+            <thead role="rowgroup">
+              <tr role="row">
+                <th role="columnheader" scope="col"><span class="visually-hidden">Feature</span></th>
+                <th role="columnheader" scope="col" class="nova">NOVA</th>
+                <th role="columnheader" scope="col">Spreadsheets</th>
+                <th role="columnheader" scope="col">Traditional dashboards</th>
               </tr>
             </thead>
-            <tbody>
-              <tr>
-                <th scope="row">Ask questions in plain English</th>
-                <td class="nova"><i class="bi bi-check-circle-fill mark yes" aria-hidden="true"></i><span
-                    class="visually-hidden">Yes. </span>Built in</td>
-                <td><i class="bi bi-x-circle-fill mark no" aria-hidden="true"></i><span class="visually-hidden">No.
-                  </span>Formulas required</td>
-                <td><i class="bi bi-dash-circle-fill mark part" aria-hidden="true"></i><span
-                    class="visually-hidden">Partly. </span>Only pre-built charts</td>
+            <tbody role="rowgroup">
+              <tr role="row">
+                <th role="rowheader" scope="row">Ask questions in plain English</th>
+                <td class="nova" role="cell" data-label="NOVA"><span class="val"><i
+                      class="bi bi-check-circle-fill mark yes" aria-hidden="true"></i><span class="visually-hidden">Yes.
+                    </span>Built in</span></td>
+                <td role="cell" data-label="Spreadsheets"><span class="val"><i class="bi bi-x-circle-fill mark no"
+                      aria-hidden="true"></i><span class="visually-hidden">No. </span>Formulas required</span></td>
+                <td role="cell" data-label="Traditional dashboards"><span class="val"><i
+                      class="bi bi-dash-circle-fill mark part" aria-hidden="true"></i><span
+                      class="visually-hidden">Partly. </span>Only pre-built charts</span></td>
               </tr>
-              <tr>
-                <th scope="row">Explains why a number moved</th>
-                <td class="nova"><i class="bi bi-check-circle-fill mark yes" aria-hidden="true"></i><span
-                    class="visually-hidden">Yes. </span>Automatically</td>
-                <td><i class="bi bi-x-circle-fill mark no" aria-hidden="true"></i><span class="visually-hidden">No.
-                  </span>Manual digging</td>
-                <td><i class="bi bi-x-circle-fill mark no" aria-hidden="true"></i><span class="visually-hidden">No.
-                  </span>Shows what, not why</td>
+              <tr role="row">
+                <th role="rowheader" scope="row">Explains why a number moved</th>
+                <td class="nova" role="cell" data-label="NOVA"><span class="val"><i
+                      class="bi bi-check-circle-fill mark yes" aria-hidden="true"></i><span class="visually-hidden">Yes.
+                    </span>Automatically</span></td>
+                <td role="cell" data-label="Spreadsheets"><span class="val"><i class="bi bi-x-circle-fill mark no"
+                      aria-hidden="true"></i><span class="visually-hidden">No. </span>Manual digging</span></td>
+                <td role="cell" data-label="Traditional dashboards"><span class="val"><i
+                      class="bi bi-x-circle-fill mark no" aria-hidden="true"></i><span class="visually-hidden">No.
+                    </span>Shows what, not why</span></td>
               </tr>
-              <tr>
-                <th scope="row">Time to the first answer</th>
-                <td class="nova"><i class="bi bi-check-circle-fill mark yes" aria-hidden="true"></i><span
-                    class="visually-hidden">Yes. </span>About a minute</td>
-                <td><i class="bi bi-dash-circle-fill mark part" aria-hidden="true"></i><span
-                    class="visually-hidden">Partly. </span>Hours of copy and paste</td>
-                <td><i class="bi bi-dash-circle-fill mark part" aria-hidden="true"></i><span
-                    class="visually-hidden">Partly. </span>Days with an analyst</td>
+              <tr role="row">
+                <th role="rowheader" scope="row">Time to the first answer</th>
+                <td class="nova" role="cell" data-label="NOVA"><span class="val"><i
+                      class="bi bi-check-circle-fill mark yes" aria-hidden="true"></i><span class="visually-hidden">Yes.
+                    </span>About a minute</span></td>
+                <td role="cell" data-label="Spreadsheets"><span class="val"><i class="bi bi-dash-circle-fill mark part"
+                      aria-hidden="true"></i><span class="visually-hidden">Partly. </span>Hours of copy and paste</span>
+                </td>
+                <td role="cell" data-label="Traditional dashboards"><span class="val"><i
+                      class="bi bi-dash-circle-fill mark part" aria-hidden="true"></i><span
+                      class="visually-hidden">Partly. </span>Days with an analyst</span></td>
               </tr>
-              <tr>
-                <th scope="row">Easy for anyone on the team</th>
-                <td class="nova"><i class="bi bi-check-circle-fill mark yes" aria-hidden="true"></i><span
-                    class="visually-hidden">Yes. </span>No training needed</td>
-                <td><i class="bi bi-dash-circle-fill mark part" aria-hidden="true"></i><span
-                    class="visually-hidden">Partly. </span>Usually one expert</td>
-                <td><i class="bi bi-dash-circle-fill mark part" aria-hidden="true"></i><span
-                    class="visually-hidden">Partly. </span>Needs training</td>
+              <tr role="row">
+                <th role="rowheader" scope="row">Easy for anyone on the team</th>
+                <td class="nova" role="cell" data-label="NOVA"><span class="val"><i
+                      class="bi bi-check-circle-fill mark yes" aria-hidden="true"></i><span class="visually-hidden">Yes.
+                    </span>No training needed</span></td>
+                <td role="cell" data-label="Spreadsheets"><span class="val"><i class="bi bi-dash-circle-fill mark part"
+                      aria-hidden="true"></i><span class="visually-hidden">Partly. </span>Usually one expert</span></td>
+                <td role="cell" data-label="Traditional dashboards"><span class="val"><i
+                      class="bi bi-dash-circle-fill mark part" aria-hidden="true"></i><span
+                      class="visually-hidden">Partly. </span>Needs training</span></td>
               </tr>
-              <tr>
-                <th scope="row">Data stays in your warehouse</th>
-                <td class="nova"><i class="bi bi-check-circle-fill mark yes" aria-hidden="true"></i><span
-                    class="visually-hidden">Yes. </span>Read only, never copied</td>
-                <td><i class="bi bi-x-circle-fill mark no" aria-hidden="true"></i><span class="visually-hidden">No.
-                  </span>Exported copies</td>
-                <td><i class="bi bi-dash-circle-fill mark part" aria-hidden="true"></i><span
-                    class="visually-hidden">Partly. </span>Depends on the tool</td>
+              <tr role="row">
+                <th role="rowheader" scope="row">Data stays in your warehouse</th>
+                <td class="nova" role="cell" data-label="NOVA"><span class="val"><i
+                      class="bi bi-check-circle-fill mark yes" aria-hidden="true"></i><span class="visually-hidden">Yes.
+                    </span>Read only, never copied</span></td>
+                <td role="cell" data-label="Spreadsheets"><span class="val"><i class="bi bi-x-circle-fill mark no"
+                      aria-hidden="true"></i><span class="visually-hidden">No. </span>Exported copies</span></td>
+                <td role="cell" data-label="Traditional dashboards"><span class="val"><i
+                      class="bi bi-dash-circle-fill mark part" aria-hidden="true"></i><span
+                      class="visually-hidden">Partly. </span>Depends on the tool</span></td>
               </tr>
             </tbody>
           </table>
