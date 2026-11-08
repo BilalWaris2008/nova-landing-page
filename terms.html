@@ -4,6 +4,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script>
+        // Apply the saved theme (dark by default) before the first paint, so the page never flashes the wrong colours
+        (function () {
+            var t = null;
+            try {
+                t = localStorage.getItem('nova-theme');
+            } catch (e) {}
+            if (t !== 'light') t = 'dark'; // dark is the default theme
+            document.documentElement.setAttribute('data-theme', t);
+            document.documentElement.setAttribute('data-bs-theme', t);
+        })();
+    </script>
     <title>Terms of Use | NOVA</title>
     <meta name="description" content="The terms for using the NOVA website.">
     <link rel="canonical" href="https://nova-ai-page.vercel.app/terms.html">
@@ -27,14 +39,31 @@
 </head>
 
 <body>
+    <div class="cursor" aria-hidden="true"></div>
+
+    <!-- Loader (same as the home page) -->
+    <div id="preloader" aria-hidden="true">
+        <span class="pre-brand">NOVA</span>
+        <span class="pre-count" id="preCount">0</span>
+    </div>
     <nav class="navbar fixed-top nova-nav scrolled">
         <div class="container">
             <a class="navbar-brand" href="./"><span class="logo-dot"></span>NOVA</a>
-            <a href="./" class="btn btn-ghost"><i class="bi bi-arrow-left me-2"></i>Back to home</a>
+            <div class="d-flex align-items-center gap-2">
+                <button type="button" class="theme-toggle" aria-label="Switch to light theme"><i
+                        class="bi bi-sun-fill t-sun" aria-hidden="true"></i><i class="bi bi-moon-stars-fill t-moon"
+                        aria-hidden="true"></i></button>
+                <a href="./" class="btn btn-ghost"><i class="bi bi-arrow-left me-2"></i>Back to home</a>
+            </div>
         </div>
     </nav>
 
     <main class="legal">
+        <div class="legal-glow" aria-hidden="true">
+            <div class="orb orb-1"></div>
+            <div class="orb orb-2"></div>
+            <div class="grid-bg"></div>
+        </div>
         <div class="container">
             <article class="legal-doc">
                 <h1>Terms of Use</h1>
@@ -127,14 +156,27 @@
         </div>
         <div class="foot-mark" aria-hidden="true">NOVA</div>
     </footer>
-    <script>
-        // Placeholder links (href="#") should not jump to the top of the page
-        document.querySelectorAll('a[href="#"]').forEach(function (a) {
-            a.addEventListener('click', function (e) {
-                e.preventDefault();
-            });
-        });
-    </script>
+    <!-- Floating back-to-top button with scroll progress ring -->
+    <button type="button" class="fab-top" id="toTop" aria-label="Back to top">
+        <svg viewBox="0 0 48 48" aria-hidden="true">
+            <defs>
+                <linearGradient id="ringGrad" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0" stop-color="#7B61FF" />
+                    <stop offset="1" stop-color="#FF9E6D" />
+                </linearGradient>
+            </defs>
+            <circle class="ring-bg" cx="24" cy="24" r="21" />
+            <circle class="ring" cx="24" cy="24" r="21" />
+        </svg>
+        <i class="bi bi-arrow-up"></i>
+    </button>
+
+    <!-- Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.9/dist/lenis.min.js"></script>
+    <script src="js/theme.js"></script>
+    <script src="js/legal.js"></script>
 </body>
 
 </html>

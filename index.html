@@ -4,6 +4,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script>
+    // Apply the saved theme (dark by default) before the first paint, so the page never flashes the wrong colours
+    (function () {
+      var t = null;
+      try {
+        t = localStorage.getItem('nova-theme');
+      } catch (e) {}
+      if (t !== 'light') t = 'dark'; // dark is the default theme
+      document.documentElement.setAttribute('data-theme', t);
+      document.documentElement.setAttribute('data-bs-theme', t);
+    })();
+  </script>
   <title>NOVA | AI analytics that explains why your numbers moved</title>
   <meta name="description"
     content="NOVA connects to your data, answers questions in plain English and explains the cause behind every spike. Start free in under a minute.">
@@ -63,6 +75,9 @@
   <nav class="navbar navbar-expand-lg fixed-top nova-nav" id="nav">
     <div class="container">
       <a class="navbar-brand" href="#home"><span class="logo-dot"></span>NOVA</a>
+      <button type="button" class="theme-toggle d-lg-none ms-auto me-2" aria-label="Switch to light theme"><i
+          class="bi bi-sun-fill t-sun" aria-hidden="true"></i><i class="bi bi-moon-stars-fill t-moon"
+          aria-hidden="true"></i></button>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu"
         aria-controls="navMenu" aria-expanded="false" aria-label="Toggle menu">
         <span class="burger" aria-hidden="true"><i></i><i></i></span>
@@ -75,6 +90,9 @@
           <li class="nav-item"><a class="nav-link" href="#faq">FAQ</a></li>
         </ul>
         <div class="d-flex align-items-lg-center flex-column flex-lg-row gap-2 mt-3 mt-lg-0">
+          <button type="button" class="theme-toggle d-none d-lg-grid" aria-label="Switch to light theme"><i
+              class="bi bi-sun-fill t-sun" aria-hidden="true"></i><i class="bi bi-moon-stars-fill t-moon"
+              aria-hidden="true"></i></button>
           <a href="#" class="btn btn-ghost">Sign in</a>
           <a href="#pricing" class="btn btn-nova magnetic">Start free</a>
         </div>
@@ -882,6 +900,7 @@ GROUP BY day ORDER BY day;</code></pre>
   <script src="https://cdn.jsdelivr.net/npm/typed.js@2.1.0/dist/typed.umd.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/swiper@11.1.14/swiper-bundle.min.js"></script>
+  <script src="js/theme.js"></script>
   <script src="js/main.js"></script>
 </body>
 
