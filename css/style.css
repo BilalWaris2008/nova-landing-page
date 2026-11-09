@@ -1,4 +1,132 @@
 /* ===== NOVA: base, preloader, navbar, hero ===== */
+/* Colour tokens are registered so the browser can animate them. Switching theme then fades every colour,
+   gradients and shadows' colours included, instead of jumping. */
+@property --ink {
+    syntax: '<color>';
+    inherits: true;
+    initial-value: #070A1B;
+}
+
+@property --ink-2 {
+    syntax: '<color>';
+    inherits: true;
+    initial-value: #0E1230;
+}
+
+@property --line {
+    syntax: '<color>';
+    inherits: true;
+    initial-value: rgba(255, 255, 255, .09);
+}
+
+@property --text {
+    syntax: '<color>';
+    inherits: true;
+    initial-value: #ECEEFA;
+}
+
+@property --strong {
+    syntax: '<color>';
+    inherits: true;
+    initial-value: #ffffff;
+}
+
+@property --soft {
+    syntax: '<color>';
+    inherits: true;
+    initial-value: #C5C9E6;
+}
+
+@property --muted {
+    syntax: '<color>';
+    inherits: true;
+    initial-value: #8E94B8;
+}
+
+@property --violet {
+    syntax: '<color>';
+    inherits: true;
+    initial-value: #7B61FF;
+}
+
+@property --apricot {
+    syntax: '<color>';
+    inherits: true;
+    initial-value: #FF9E6D;
+}
+
+@property --accent {
+    syntax: '<color>';
+    inherits: true;
+    initial-value: #FF9E6D;
+}
+
+@property --mint {
+    syntax: '<color>';
+    inherits: true;
+    initial-value: #5EE6B0;
+}
+
+@property --fill {
+    syntax: '<color>';
+    inherits: true;
+    initial-value: rgba(255, 255, 255, .05);
+}
+
+@property --fill-2 {
+    syntax: '<color>';
+    inherits: true;
+    initial-value: rgba(255, 255, 255, .1);
+}
+
+@property --glass {
+    syntax: '<color>';
+    inherits: true;
+    initial-value: rgba(7, 10, 27, .65);
+}
+
+@property --glass-strong {
+    syntax: '<color>';
+    inherits: true;
+    initial-value: rgba(14, 18, 48, .85);
+}
+
+@property --code-text {
+    syntax: '<color>';
+    inherits: true;
+    initial-value: #C9CDF2;
+}
+
+@property --logo-text {
+    syntax: '<color>';
+    inherits: true;
+    initial-value: rgba(236, 238, 250, .5);
+}
+
+@property --bar {
+    syntax: '<color>';
+    inherits: true;
+    initial-value: rgba(255, 255, 255, .38);
+}
+
+@property --card-a {
+    syntax: '<color>';
+    inherits: true;
+    initial-value: rgba(255, 255, 255, .055);
+}
+
+@property --card-b {
+    syntax: '<color>';
+    inherits: true;
+    initial-value: rgba(255, 255, 255, .015);
+}
+
+@property --mark-a {
+    syntax: '<color>';
+    inherits: true;
+    initial-value: rgba(255, 255, 255, .16);
+}
+
 :root {
     color-scheme: dark;
     --ink: #070A1B;
@@ -17,20 +145,46 @@
     --accent: #FF9E6D;
     /* accent used for text and icons */
     --mint: #5EE6B0;
-    --grad: linear-gradient(135deg, var(--violet), var(--apricot));
     --fill: rgba(255, 255, 255, .05);
     --fill-2: rgba(255, 255, 255, .1);
-    --card-bg: linear-gradient(160deg, rgba(255, 255, 255, .055), rgba(255, 255, 255, .015));
-    --card-shadow: none;
     --glass: rgba(7, 10, 27, .65);
     --glass-strong: rgba(14, 18, 48, .85);
     --code-text: #C9CDF2;
     --logo-text: rgba(236, 238, 250, .5);
     --bar: rgba(255, 255, 255, .38);
-    --mark: linear-gradient(180deg, rgba(255, 255, 255, .16), transparent 85%);
+    --card-a: rgba(255, 255, 255, .055);
+    --card-b: rgba(255, 255, 255, .015);
+    --mark-a: rgba(255, 255, 255, .16);
+    /* composed tokens: built from the colour tokens above, so they animate too */
+    --grad: linear-gradient(135deg, var(--violet), var(--apricot));
+    --card-bg: linear-gradient(160deg, var(--card-a), var(--card-b));
+    --mark: linear-gradient(180deg, var(--mark-a), transparent 85%);
+    --card-shadow: none;
     --shadow-pop: 0 24px 60px -20px rgba(0, 0, 0, .7);
     --thumb-shadow: 0 0 0 5px rgba(123, 97, 255, .35), 0 4px 14px rgba(0, 0, 0, .5);
     --backdrop: #02030c;
+    transition:
+        --ink .55s ease,
+        --ink-2 .55s ease,
+        --line .55s ease,
+        --text .55s ease,
+        --strong .55s ease,
+        --soft .55s ease,
+        --muted .55s ease,
+        --violet .55s ease,
+        --apricot .55s ease,
+        --accent .55s ease,
+        --mint .55s ease,
+        --fill .55s ease,
+        --fill-2 .55s ease,
+        --glass .55s ease,
+        --glass-strong .55s ease,
+        --code-text .55s ease,
+        --logo-text .55s ease,
+        --bar .55s ease,
+        --card-a .55s ease,
+        --card-b .55s ease,
+        --mark-a .55s ease;
 }
 
 :root[data-theme="light"] {
@@ -48,14 +202,15 @@
     --mint: #0B8F63;
     --fill: rgba(14, 18, 48, .045);
     --fill-2: rgba(14, 18, 48, .085);
-    --card-bg: linear-gradient(160deg, #FFFFFF, #FAFAFF);
-    --card-shadow: 0 1px 2px rgba(14, 18, 48, .05), 0 18px 50px -24px rgba(48, 56, 140, .35);
     --glass: rgba(255, 255, 255, .72);
     --glass-strong: rgba(255, 255, 255, .92);
     --code-text: #34396A;
     --logo-text: rgba(14, 18, 48, .42);
     --bar: rgba(14, 18, 48, .32);
-    --mark: linear-gradient(180deg, rgba(14, 18, 48, .12), transparent 85%);
+    --card-a: #FFFFFF;
+    --card-b: #FAFAFF;
+    --mark-a: rgba(14, 18, 48, .12);
+    --card-shadow: 0 1px 2px rgba(14, 18, 48, .05), 0 18px 50px -24px rgba(48, 56, 140, .35);
     --shadow-pop: 0 18px 50px -18px rgba(30, 40, 110, .4);
     --thumb-shadow: 0 0 0 5px rgba(106, 77, 245, .28), 0 2px 8px rgba(14, 18, 48, .35);
 }
@@ -75,13 +230,41 @@
     --mint: #5EE6B0;
     --fill: rgba(255, 255, 255, .05);
     --fill-2: rgba(255, 255, 255, .1);
-    --card-bg: linear-gradient(160deg, rgba(255, 255, 255, .055), rgba(255, 255, 255, .015));
+    --card-a: rgba(255, 255, 255, .055);
+    --card-b: rgba(255, 255, 255, .015);
+    --grad: linear-gradient(135deg, var(--violet), var(--apricot));
+    --card-bg: linear-gradient(160deg, var(--card-a), var(--card-b));
     --code-text: #C9CDF2;
     --glass: rgba(7, 10, 27, .65);
 }
 
 #demoModal .modal-content {
     color: var(--text);
+}
+
+/* Theme switch: a circle of the new theme grows from the toggle button (View Transitions API) */
+::view-transition-old(root),
+::view-transition-new(root) {
+    animation: none;
+    mix-blend-mode: normal;
+}
+
+::view-transition-old(root) {
+    z-index: 1;
+}
+
+::view-transition-new(root) {
+    z-index: 2;
+}
+
+:root.vt {
+    transition: none !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    :root {
+        transition: none;
+    }
 }
 
 html {
@@ -2924,4 +3107,17 @@ html.theme-anim *::after {
 
 .t-nav button:hover {
     color: #fff;
+}
+
+/* Card shadows appear and disappear smoothly when the theme changes */
+.bento-card,
+.t-card,
+.plan,
+.roi-card,
+.compare-wrap,
+.compare tr,
+.d-slack,
+.mock,
+.showcase-main {
+    transition: box-shadow .55s ease;
 }
