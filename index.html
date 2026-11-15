@@ -105,6 +105,7 @@
     <div class="orb orb-1"></div>
     <div class="orb orb-2"></div>
     <div class="grid-bg"></div>
+    <canvas id="heroCanvas" class="hero-canvas" aria-hidden="true"></canvas>
 
     <div class="container position-relative">
       <div class="row justify-content-center text-center">
@@ -384,6 +385,49 @@ GROUP BY day ORDER BY day;</code></pre>
           </div>
           <div class="float-card f2" data-speed="0.2"><i class="bi bi-graph-up-arrow"></i>
             <div><small>Forecast, next month</small><strong>$62k</strong></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Try NOVA: interactive demo with sample questions (no AI, no cost) -->
+    <section class="section try" id="try">
+      <div class="container">
+        <div class="text-center mx-auto mb-5" style="max-width: 40rem;">
+          <h2 class="section-title">Ask NOVA anything. Try it right now.</h2>
+          <p class="section-sub mt-3">Pick a question or type your own. This demo runs on sample data to show how NOVA
+            answers.</p>
+        </div>
+
+        <div class="ask-app">
+          <div class="mock-bar"><i></i><i></i><i></i><span>nova.app / ask</span></div>
+          <div class="ask-body">
+            <div class="ask-chat" aria-live="polite">
+              <div class="a-msg a-user" id="askUser" hidden></div>
+              <div class="a-msg a-nova" id="askNova">Hi, I am NOVA. Pick a question below and I will find the cause.
+              </div>
+              <ul class="a-causes" id="askCauses"></ul>
+            </div>
+            <div class="ask-viz">
+              <p class="a-viz-title" id="askVizTitle"></p>
+              <svg id="askSvg" viewBox="0 0 400 220" role="img" aria-label="Chart for the answer"></svg>
+              <p class="a-empty" id="askEmpty">The chart appears here</p>
+            </div>
+          </div>
+          <div class="ask-foot">
+            <div class="a-chips" role="group" aria-label="Sample questions">
+              <button type="button" class="a-chip" data-id="signups">Why did signups drop on Tuesday?</button>
+              <button type="button" class="a-chip" data-id="churn">Which plan has the highest churn?</button>
+              <button type="button" class="a-chip" data-id="revenue">Why did revenue jump in October?</button>
+              <button type="button" class="a-chip" data-id="channel">Which channel brings the best customers?</button>
+            </div>
+            <form class="a-form" id="askForm" novalidate>
+              <input type="text" id="askInput" maxlength="120"
+                placeholder="Or type your own, for example: why did revenue jump?" aria-label="Ask NOVA a question"
+                autocomplete="off">
+              <button type="submit" class="btn btn-nova">Ask</button>
+            </form>
+            <p class="a-note">Sample data for demonstration. The real NOVA answers questions about your own data.</p>
           </div>
         </div>
       </div>
@@ -899,6 +943,8 @@ GROUP BY day ORDER BY day;</code></pre>
   <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.9/dist/lenis.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/typed.js@2.1.0/dist/typed.umd.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="js/hero3d.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/swiper@11.1.14/swiper-bundle.min.js"></script>
   <script src="js/theme.js"></script>
   <script src="js/main.js"></script>

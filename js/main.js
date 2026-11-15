@@ -233,6 +233,136 @@ $(function () {
     });
   });
 
+  /* ---------- Try NOVA: interactive demo with sample questions ---------- */
+  safe('ask-demo', () => {
+    const KB = [
+      {
+        id: 'signups', q: 'Why did signups drop on Tuesday?', keys: ['signup', 'sign up', 'sign-up', 'tuesday', 'checkout', 'registration'],
+        answer: 'Signups fell 12% on Tuesday. The checkout page slowed down after the 4:10 pm release, and drop-offs at the payment step doubled.',
+        causes: [['Checkout slowed after the 4:10 pm release', '-9%', 'down'], ['Email campaign was paused', '-3%', 'down']],
+        chart: { type: 'line', title: 'Daily signups', labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'], values: [164, 144, 158, 166, 171, 132, 128], hi: { i: 1, label: '-12%', below: true } }
+      },
+      {
+        id: 'churn', q: 'Which plan has the highest churn?', keys: ['churn', 'cancel', 'retention', 'leaving', 'plan'],
+        answer: 'The Starter plan, at 4.8% this quarter. Most cancellations happen within 30 days, right after the free trial ends.',
+        causes: [['Cancelled within 30 days of the trial ending', '62%', 'down'], ['Teams with no data source connected', '2.5x churn', 'down']],
+        chart: { type: 'bar', title: 'Monthly churn by plan (%)', labels: ['Starter', 'Team', 'Scale'], values: [4.8, 2.1, 1.2], unit: '%', hi: 0 }
+      },
+      {
+        id: 'revenue', q: 'Why did revenue jump in October?', keys: ['revenue', 'october', 'jump', 'pricing', 'sales', 'money', 'income', 'grow'],
+        answer: 'Revenue rose 18% in October after the Oct 3 pricing change, mostly from Team plan upgrades.',
+        causes: [['Pricing change on Oct 3', '+11%', 'up'], ['Referral campaign', '+5%', 'up'], ['Seasonality', '+2%', 'up']],
+        chart: { type: 'line', title: 'Monthly revenue ($k)', labels: ['Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov'], values: [30.1, 31.8, 33.2, 35, 41.3, 48.2], hi: { i: 4, label: '+18%' } }
+      },
+      {
+        id: 'channel', q: 'Which channel brings the best customers?', keys: ['channel', 'customer', 'acquisition', 'marketing', 'referral', 'best', 'source'],
+        answer: 'Referrals. They convert at 6.4%, and referred customers stay 40% longer than customers from paid ads.',
+        causes: [['Referral conversion rate', '6.4%', 'up'], ['Referred customers stay longer', '+40%', 'up']],
+        chart: { type: 'bar', title: 'Conversion by channel (%)', labels: ['Referral', 'Email', 'Organic', 'Paid ads'], values: [6.4, 4.1, 3.2, 1.9], unit: '%', hi: 0 }
+      }
+    ];
+    const FALLBACK = 'In this demo I only know a few sample questions. Tap one of the buttons below and I will show you how I answer.';
+
+    const $user = $('#askUser'), $nova = $('#askNova'), $causes = $('#askCauses'), $svg = $('#askSvg'), $title = $('#askVizTitle'), $empty = $('#askEmpty');
+    let tl = null, touched = false;
+
+    /* ----- Chart drawing (SVG built from the sample data) ----- */
+    const W = 400, H = 220, pad = { l: 16, r: 16, t: 30, b: 28 }, iw = W - pad.l - pad.r, ih = H - pad.t - pad.b;
+    const f = (n) => +n.toFixed(1);
+    const defs = '<defs><linearGradient id="askGrad" x1="0" x2="1"><stop offset="0" stop-color="#7B61FF"/><stop offset="1" stop-color="#FF9E6D"/></linearGradient>' +
+      '<linearGradient id="askArea" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7B61FF" stop-opacity=".35"/><stop offset="1" stop-color="#7B61FF" stop-opacity="0"/></linearGradient>' +
+      '<linearGradient id="askBar" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7B61FF"/><stop offset="1" stop-color="#FF9E6D"/></linearGradient></defs>';
+    const grid = [0, 1, 2].map((i) => { const y = f(pad.t + ih * i / 2); return '<line class="a-grid" x1="' + pad.l + '" x2="' + (W - pad.r) + '" y1="' + y + '" y2="' + y + '"/>'; }).join('');
+
+    const lineChart = (c) => {
+      const n = c.values.length, lo = Math.min.apply(null, c.values) * 0.85, hi = Math.max.apply(null, c.values) * 1.05;
+      const pts = c.values.map((v, i) => [f(pad.l + iw * i / (n - 1)), f(pad.t + ih * (1 - (v - lo) / (hi - lo)))]);
+      let d = 'M' + pts[0][0] + ' ' + pts[0][1];
+      for (let i = 1; i < n; i++) { const mx = f((pts[i - 1][0] + pts[i][0]) / 2); d += ' C' + mx + ' ' + pts[i - 1][1] + ', ' + mx + ' ' + pts[i][1] + ', ' + pts[i][0] + ' ' + pts[i][1]; }
+      const area = d + ' L' + pts[n - 1][0] + ' ' + (H - pad.b) + ' L' + pts[0][0] + ' ' + (H - pad.b) + ' Z';
+      const dots = pts.map((p, i) => i === c.hi.i ? '' : '<circle class="a-dot" cx="' + p[0] + '" cy="' + p[1] + '" r="3.5"/>').join('');
+      const hp = pts[c.hi.i], ly = c.hi.below ? hp[1] + 24 : hp[1] - 14;
+      const axis = pts.map((p, i) => '<text class="a-axis" x="' + p[0] + '" y="' + (H - 8) + '">' + c.labels[i] + '</text>').join('');
+      return defs + grid + '<path class="a-area" fill="url(#askArea)" d="' + area + '"/><path class="a-line" pathLength="1" d="' + d + '"/>' + dots +
+        '<circle class="a-hi" cx="' + hp[0] + '" cy="' + hp[1] + '" r="6"/><text class="a-hi-label" x="' + hp[0] + '" y="' + f(ly) + '">' + c.hi.label + '</text>' + axis;
+    };
+    const barChart = (c) => {
+      const n = c.values.length, slot = iw / n, bw = slot * 0.5, max = Math.max.apply(null, c.values) * 1.18;
+      return defs + grid + c.values.map((v, i) => {
+        const h = ih * v / max, x = f(pad.l + slot * i + (slot - bw) / 2), y = f(pad.t + ih - h), cx = f(pad.l + slot * i + slot / 2);
+        return '<rect class="a-bar' + (i === c.hi ? ' top' : '') + '" x="' + x + '" y="' + y + '" width="' + f(bw) + '" height="' + f(h) + '" rx="6"/>' +
+          '<text class="a-val" x="' + cx + '" y="' + f(y - 7) + '">' + v + c.unit + '</text><text class="a-axis" x="' + cx + '" y="' + (H - 8) + '">' + c.labels[i] + '</text>';
+      }).join('');
+    };
+
+    /* ----- Matching what the visitor typed to a sample question ----- */
+    const match = (text) => {
+      const low = text.toLowerCase();
+      let best = null, bestScore = 0;
+      KB.forEach((e) => {
+        const score = e.keys.filter((k) => low.indexOf(k) !== -1).length;
+        if (score > bestScore) { best = e; bestScore = score; }
+      });
+      return best;
+    };
+
+    /* ----- Show one answer ----- */
+    const ask = (entry, userText) => {
+      if (tl) tl.kill();
+      $('.a-chip').removeClass('is-active');
+      if (entry) $('.a-chip[data-id="' + entry.id + '"]').addClass('is-active');
+      $user.text(userText).prop('hidden', false);
+
+      const text = entry ? entry.answer : FALLBACK;
+      $causes.empty();
+      if (entry) {
+        entry.causes.forEach((c) => $causes.append($('<li>').append($('<span>').text(c[0]), $('<b>').addClass(c[2]).text(c[1]))));
+        $svg.html(entry.chart.type === 'line' ? lineChart(entry.chart) : barChart(entry.chart));
+        $title.text(entry.chart.title);
+        $empty.prop('hidden', true);
+      } else {
+        $svg.empty(); $title.text(''); $empty.prop('hidden', false);
+      }
+
+      if (reduce) { $nova.text(text); return; } // reduced motion: show the finished answer at once
+
+      const line = $svg.find('.a-line')[0];
+      const bars = $svg.find('.a-bar').toArray();
+      const soft = $svg.find('.a-area, .a-dot, .a-hi, .a-hi-label, .a-val').toArray();
+      const lis = $causes.children().toArray();
+      const typing = { n: 0 }, dur = Math.min(2.6, text.length * 0.022);
+
+      $nova.html('<span class="a-dots"><i></i><i></i><i></i></span>');
+      tl = gsap.timeline();
+      tl.fromTo($user[0], { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.35, ease: 'power3.out' })
+        .to({}, { duration: 0.9 })
+        .addLabel('answer')
+        .to(typing, { n: text.length, duration: dur, ease: 'none', onUpdate: () => $nova.text(text.slice(0, Math.round(typing.n))) }, 'answer');
+      if (line) tl.fromTo(line, { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: 1.3, ease: 'power2.inOut' }, 'answer+=0.2');
+      if (bars.length) tl.fromTo(bars, { scaleY: 0, transformOrigin: '50% 100%' }, { scaleY: 1, duration: 0.7, stagger: 0.1, ease: 'power3.out' }, 'answer+=0.2');
+      if (soft.length) tl.fromTo(soft, { opacity: 0 }, { opacity: 1, duration: 0.6, stagger: 0.05 }, 'answer+=0.9');
+      if (lis.length) tl.fromTo(lis, { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.5, stagger: 0.12, ease: 'power3.out' }, 'answer+=' + Math.max(0.6, dur - 0.2));
+    };
+
+    $('.a-chip').on('click', function () {
+      touched = true;
+      const e = KB.filter((k) => k.id === $(this).attr('data-id'))[0];
+      ask(e, e.q);
+    });
+    $('#askForm').on('submit', function (ev) {
+      ev.preventDefault();
+      const text = $('#askInput').val().trim();
+      if (!text) return;
+      touched = true;
+      ask(match(text), text);
+      this.reset();
+    });
+
+    // The first question answers itself when the demo scrolls into view
+    if (reduce) ask(KB[0], KB[0].q);
+    else ScrollTrigger.create({ trigger: '.ask-app', start: 'top 65%', once: true, onEnter: () => { if (!touched) ask(KB[0], KB[0].q); } });
+  });
+
   /* ---------- ROI calculator + comparison table ---------- */
   safe('roi', () => {
     const WEEKS = 4.33, NOVA_MINUTES = 1, PLAN = 49; // weeks per month, minutes NOVA needs per answer, Team plan price
