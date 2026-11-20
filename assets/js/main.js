@@ -1,4 +1,24 @@
 /* ===== NOVA: smooth scroll, preloader, animations, interactions ===== */
+/* Sections, in order:
+ *   - Smooth scroll (Lenis + ScrollTrigger)
+ *   - Navbar
+ *   - Hero text split
+ *   - Hero sequence (the main intro moment)
+ *   - Preloader
+ *   - Bento grid animations
+ *   - How it works (pinned scroll)
+ *   - Stats counters + product showcase parallax
+ *   - Try NOVA: interactive demo with sample questions
+ *   - Chart drawing (SVG built from the sample data)
+ *   - Matching what the visitor typed to a sample question
+ *   - Show one answer
+ *   - ROI calculator + comparison table
+ *   - Testimonials slider + pricing toggle
+ *   - FAQ, CTA, footer
+ *   - Demo video (HTML animation driven by a GSAP timeline)
+ *   - Floating back-to-top (progress ring)
+ *   - Desktop-only effects
+ */
 $(function () {
   // Failsafe: remove the preloader after 5s even if something below fails
   setTimeout(() => $('#preloader').remove(), 5000);

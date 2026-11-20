@@ -176,7 +176,7 @@
 
     /* ---------- Theme: colours blend smoothly between dark and light ---------- */
     var THEME = {
-      dark:  { a: [0.50, 0.40, 1.00], b: [1.00, 0.62, 0.44], core: [1, 1, 1], add: 1, field: 1.15, nodes: 1.0, lines: 0.26, contour: 0.20, pulse: 1.0 },
+      dark: { a: [0.50, 0.40, 1.00], b: [1.00, 0.62, 0.44], core: [1, 1, 1], add: 1, field: 1.15, nodes: 1.0, lines: 0.26, contour: 0.20, pulse: 1.0 },
       light: { a: [0.36, 0.25, 0.90], b: [0.96, 0.43, 0.16], core: [0.20, 0.14, 0.52], add: 0, field: 0.95, nodes: 0.85, lines: 0.38, contour: 0.30, pulse: 0.95 }
     };
     var themeNow = document.documentElement.getAttribute('data-theme') === 'light' ? 1 : 0, themeGoal = themeNow;

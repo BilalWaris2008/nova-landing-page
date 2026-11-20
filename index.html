@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -7,48 +8,59 @@
     // Apply the saved theme (dark by default) before the first paint, so the page never flashes the wrong colours
     (function () {
       var t = null;
-      try { t = localStorage.getItem('nova-theme'); } catch (e) {}
+      try {
+        t = localStorage.getItem('nova-theme');
+      } catch (e) {}
       if (t !== 'light') t = 'dark'; // dark is the default theme
       document.documentElement.setAttribute('data-theme', t);
       document.documentElement.setAttribute('data-bs-theme', t);
     })();
   </script>
   <title>NOVA | AI analytics that explains why your numbers moved</title>
-  <meta name="description" content="NOVA connects to your data, answers questions in plain English and explains the cause behind every spike. Start free in under a minute.">
+  <meta name="description"
+    content="NOVA connects to your data, answers questions in plain English and explains the cause behind every spike. Start free in under a minute.">
   <meta name="author" content="Muhammad Bilal Waris">
   <link rel="canonical" href="https://nova-ai-page.vercel.app/">
-  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
 
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="NOVA">
   <meta property="og:title" content="NOVA | AI analytics that explains why your numbers moved">
-  <meta property="og:description" content="NOVA connects to your data, answers questions in plain English and explains the cause behind every spike. Start free in under a minute.">
+  <meta property="og:description"
+    content="NOVA connects to your data, answers questions in plain English and explains the cause behind every spike. Start free in under a minute.">
   <meta property="og:url" content="https://nova-ai-page.vercel.app/">
-  <meta property="og:image" content="https://nova-ai-page.vercel.app/og-image.png">
+  <meta property="og:image" content="https://nova-ai-page.vercel.app/assets/img/og-image.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="NOVA: know why your numbers moved, not just that they did.">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="NOVA | AI analytics that explains why your numbers moved">
-  <meta name="twitter:description" content="NOVA connects to your data, answers questions in plain English and explains the cause behind every spike. Start free in under a minute.">
-  <meta name="twitter:image" content="https://nova-ai-page.vercel.app/og-image.png">
+  <meta name="twitter:description"
+    content="NOVA connects to your data, answers questions in plain English and explains the cause behind every spike. Start free in under a minute.">
+  <meta name="twitter:image" content="https://nova-ai-page.vercel.app/assets/img/og-image.png">
 
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2064%2064%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%237B61FF%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23FF9E6D%22%2F%3E%3C%2FlinearGradient%3E%3C%2Fdefs%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20rx%3D%2216%22%20fill%3D%22%23070A1B%22%2F%3E%3Cpath%20d%3D%22M32%208L38%2026L56%2032L38%2038L32%2056L26%2038L8%2032L26%2026Z%22%20fill%3D%22url%28%23g%29%22%2F%3E%3C%2Fsvg%3E">
+  <link rel="icon" type="image/svg+xml"
+    href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2064%2064%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%237B61FF%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23FF9E6D%22%2F%3E%3C%2FlinearGradient%3E%3C%2Fdefs%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20rx%3D%2216%22%20fill%3D%22%23070A1B%22%2F%3E%3Cpath%20d%3D%22M32%208L38%2026L56%2032L38%2038L32%2056L26%2038L8%2032L26%2026Z%22%20fill%3D%22url%28%23g%29%22%2F%3E%3C%2Fsvg%3E">
   <meta name="theme-color" content="#070A1B">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600&family=Sora:wght@500;600;700&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600&family=Sora:wght@500;600;700&display=swap"
+    rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/swiper@11.1.14/swiper-bundle.min.css" rel="stylesheet">
-  <link href="css/style.css" rel="stylesheet">
+  <link href="assets/css/style.css" rel="stylesheet">
 
   <!-- Vercel Web Analytics (only runs on the deployed site) -->
   <script>
-    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+    window.va = window.va || function () {
+      (window.vaq = window.vaq || []).push(arguments);
+    };
   </script>
   <script defer src="/_vercel/insights/script.js"></script>
 </head>
+
 <body>
 
   <div class="cursor" aria-hidden="true"></div>
@@ -63,8 +75,11 @@
   <nav class="navbar navbar-expand-lg fixed-top nova-nav" id="nav">
     <div class="container">
       <a class="navbar-brand" href="#home"><span class="logo-dot"></span>NOVA</a>
-      <button type="button" class="theme-toggle d-lg-none ms-auto me-2" aria-label="Switch to light theme"><i class="bi bi-sun-fill t-sun" aria-hidden="true"></i><i class="bi bi-moon-stars-fill t-moon" aria-hidden="true"></i></button>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu" aria-controls="navMenu" aria-expanded="false" aria-label="Toggle menu">
+      <button type="button" class="theme-toggle d-lg-none ms-auto me-2" aria-label="Switch to light theme"><i
+          class="bi bi-sun-fill t-sun" aria-hidden="true"></i><i class="bi bi-moon-stars-fill t-moon"
+          aria-hidden="true"></i></button>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu"
+        aria-controls="navMenu" aria-expanded="false" aria-label="Toggle menu">
         <span class="burger" aria-hidden="true"><i></i><i></i></span>
       </button>
       <div class="collapse navbar-collapse" id="navMenu">
@@ -75,7 +90,9 @@
           <li class="nav-item"><a class="nav-link" href="#faq">FAQ</a></li>
         </ul>
         <div class="d-flex align-items-lg-center flex-column flex-lg-row gap-2 mt-3 mt-lg-0">
-          <button type="button" class="theme-toggle d-none d-lg-grid" aria-label="Switch to light theme"><i class="bi bi-sun-fill t-sun" aria-hidden="true"></i><i class="bi bi-moon-stars-fill t-moon" aria-hidden="true"></i></button>
+          <button type="button" class="theme-toggle d-none d-lg-grid" aria-label="Switch to light theme"><i
+              class="bi bi-sun-fill t-sun" aria-hidden="true"></i><i class="bi bi-moon-stars-fill t-moon"
+              aria-hidden="true"></i></button>
           <a href="#" class="btn btn-ghost">Sign in</a>
           <a href="#pricing" class="btn btn-nova magnetic">Start free</a>
         </div>
@@ -95,10 +112,12 @@
         <div class="col-lg-10 col-xl-9">
           <p class="hero-badge"><span class="pulse"></span>NOVA now explains every spike for you</p>
           <h1 class="hero-title">Know why your numbers moved, not just that they did.</h1>
-          <p class="hero-sub">Connect your data once, ask in plain English, and NOVA finds the cause and draws the chart.</p>
+          <p class="hero-sub">Connect your data once, ask in plain English, and NOVA finds the cause and draws the
+            chart.</p>
           <div class="hero-cta">
             <a href="#pricing" class="btn btn-nova btn-lg magnetic">Start free</a>
-            <button type="button" class="btn btn-ghost btn-lg" data-bs-toggle="modal" data-bs-target="#demoModal"><i class="bi bi-play-circle me-2"></i>Watch the 30-sec demo</button>
+            <button type="button" class="btn btn-ghost btn-lg" data-bs-toggle="modal" data-bs-target="#demoModal"><i
+                class="bi bi-play-circle me-2"></i>Watch the 30-sec demo</button>
           </div>
         </div>
       </div>
@@ -116,18 +135,21 @@
           <svg viewBox="0 0 600 200" class="chart" aria-hidden="true">
             <defs>
               <linearGradient id="gArea" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0" stop-color="#7B61FF" stop-opacity=".45"/>
-                <stop offset="1" stop-color="#7B61FF" stop-opacity="0"/>
+                <stop offset="0" stop-color="#7B61FF" stop-opacity=".45" />
+                <stop offset="1" stop-color="#7B61FF" stop-opacity="0" />
               </linearGradient>
               <linearGradient id="gLine" x1="0" x2="1">
-                <stop offset="0" stop-color="#7B61FF"/>
-                <stop offset="1" stop-color="#FF9E6D"/>
+                <stop offset="0" stop-color="#7B61FF" />
+                <stop offset="1" stop-color="#FF9E6D" />
               </linearGradient>
             </defs>
-            <path id="chartArea" fill="url(#gArea)" d="M0 160 C60 150 90 120 140 126 S220 150 270 100 S360 60 420 80 S520 30 600 20 L600 200 L0 200 Z"/>
-            <path id="chartLine" pathLength="1" fill="none" stroke="url(#gLine)" stroke-width="3" stroke-linecap="round" d="M0 160 C60 150 90 120 140 126 S220 150 270 100 S360 60 420 80 S520 30 600 20"/>
+            <path id="chartArea" fill="url(#gArea)"
+              d="M0 160 C60 150 90 120 140 126 S220 150 270 100 S360 60 420 80 S520 30 600 20 L600 200 L0 200 Z" />
+            <path id="chartLine" pathLength="1" fill="none" stroke="url(#gLine)" stroke-width="3" stroke-linecap="round"
+              d="M0 160 C60 150 90 120 140 126 S220 150 270 100 S360 60 420 80 S520 30 600 20" />
           </svg>
-          <p class="insight"><i class="bi bi-lightning-charge-fill"></i>Revenue rose 18% after the Oct 3 pricing change, mostly from Team plan upgrades.</p>
+          <p class="insight"><i class="bi bi-lightning-charge-fill"></i>Revenue rose 18% after the Oct 3 pricing change,
+            mostly from Team plan upgrades.</p>
         </div>
       </div>
     </div>
@@ -140,12 +162,24 @@
       <div class="marquee">
         <div class="marquee-track">
           <ul class="marquee-group">
-            <li>Halcyon</li><li>Meridian Labs</li><li>Fernhill</li><li>Parcel&amp;Co</li>
-            <li>Tidewater</li><li>Kinetic</li><li>Vantage Row</li><li>Orchard</li>
+            <li>Halcyon</li>
+            <li>Meridian Labs</li>
+            <li>Fernhill</li>
+            <li>Parcel&amp;Co</li>
+            <li>Tidewater</li>
+            <li>Kinetic</li>
+            <li>Vantage Row</li>
+            <li>Orchard</li>
           </ul>
           <ul class="marquee-group" aria-hidden="true">
-            <li>Halcyon</li><li>Meridian Labs</li><li>Fernhill</li><li>Parcel&amp;Co</li>
-            <li>Tidewater</li><li>Kinetic</li><li>Vantage Row</li><li>Orchard</li>
+            <li>Halcyon</li>
+            <li>Meridian Labs</li>
+            <li>Fernhill</li>
+            <li>Parcel&amp;Co</li>
+            <li>Tidewater</li>
+            <li>Kinetic</li>
+            <li>Vantage Row</li>
+            <li>Orchard</li>
           </ul>
         </div>
       </div>
@@ -159,7 +193,8 @@
             <h2 class="section-title">Every question your team asks, answered before the meeting starts.</h2>
           </div>
           <div class="col-lg-4 offset-lg-1">
-            <p class="section-sub">Stop waiting on analysts and dashboards. NOVA turns raw data into answers anyone can read.</p>
+            <p class="section-sub">Stop waiting on analysts and dashboards. NOVA turns raw data into answers anyone can
+              read.</p>
           </div>
         </div>
 
@@ -167,13 +202,15 @@
           <div class="col-lg-7">
             <article class="bento-card">
               <h3>Ask in plain English</h3>
-              <p>Type a question the way you would ask a teammate. NOVA writes the query, runs it and draws the answer.</p>
+              <p>Type a question the way you would ask a teammate. NOVA writes the query, runs it and draws the answer.
+              </p>
               <div class="chat">
                 <div class="msg msg-q">Which plan has the highest churn this quarter?</div>
                 <div class="msg msg-a">
-                  <strong>Starter plan, at 4.8%.</strong> Most cancellations happen within 30 days, right after the free trial ends.
+                  <strong>Starter plan, at 4.8%.</strong> Most cancellations happen within 30 days, right after the free
+                  trial ends.
                   <svg class="spark" viewBox="0 0 200 44" aria-hidden="true">
-                    <path pathLength="1" d="M0 34 C20 30 30 8 55 14 S90 40 120 24 S170 4 200 10"/>
+                    <path pathLength="1" d="M0 34 C20 30 30 8 55 14 S90 40 120 24 S170 4 200 10" />
                   </svg>
                 </div>
               </div>
@@ -185,9 +222,15 @@
               <h3>Finds the cause, not just the chart</h3>
               <p>NOVA ranks what moved a number and how much each factor added.</p>
               <ul class="drivers">
-                <li><span>Pricing change</span><div class="bar"><i style="--w:78"></i></div><b>+11%</b></li>
-                <li><span>Referral campaign</span><div class="bar"><i style="--w:42"></i></div><b>+5%</b></li>
-                <li><span>Seasonality</span><div class="bar"><i style="--w:18"></i></div><b>+2%</b></li>
+                <li><span>Pricing change</span>
+                  <div class="bar"><i style="--w:78"></i></div><b>+11%</b>
+                </li>
+                <li><span>Referral campaign</span>
+                  <div class="bar"><i style="--w:42"></i></div><b>+5%</b>
+                </li>
+                <li><span>Seasonality</span>
+                  <div class="bar"><i style="--w:18"></i></div><b>+2%</b>
+                </li>
               </ul>
             </article>
           </div>
@@ -196,7 +239,8 @@
             <article class="bento-card">
               <h3>Alerts that explain themselves</h3>
               <p>Get told when something changes and why, in one message.</p>
-              <div class="alert-note"><i class="bi bi-exclamation-triangle-fill"></i><span>Signups fell 12% on Tuesday. Checkout slowed down after the 4:10 pm release.</span></div>
+              <div class="alert-note"><i class="bi bi-exclamation-triangle-fill"></i><span>Signups fell 12% on Tuesday.
+                  Checkout slowed down after the 4:10 pm release.</span></div>
             </article>
           </div>
 
@@ -276,7 +320,8 @@ GROUP BY day ORDER BY day;</code></pre>
                 <p class="panel-title">Result</p>
                 <div class="result">
                   <i class="bi bi-check-circle-fill"></i>
-                  <span><strong>Cause found.</strong> Signups fell 12% on Tuesday because checkout slowed down after the 4:10 pm release.</span>
+                  <span><strong>Cause found.</strong> Signups fell 12% on Tuesday because checkout slowed down after the
+                    4:10 pm release.</span>
                 </div>
                 <div class="actions">
                   <button type="button" class="btn btn-nova"><i class="bi bi-slack me-2"></i>Send to #growth</button>
@@ -293,10 +338,22 @@ GROUP BY day ORDER BY day;</code></pre>
     <section class="stats">
       <div class="container">
         <div class="row g-0">
-          <div class="col-6 col-lg-3"><div class="stat"><strong data-count="4.2" data-decimals="1" data-suffix="B">4.2B</strong><span>rows analysed every day</span></div></div>
-          <div class="col-6 col-lg-3"><div class="stat"><strong data-count="38" data-suffix=" sec">38 sec</strong><span>average time to connect a source</span></div></div>
-          <div class="col-6 col-lg-3"><div class="stat"><strong data-count="2400" data-suffix="+">2,400+</strong><span>teams asking NOVA questions</span></div></div>
-          <div class="col-6 col-lg-3"><div class="stat"><strong data-count="99.98" data-decimals="2" data-suffix="%">99.98%</strong><span>uptime over the last 12 months</span></div></div>
+          <div class="col-6 col-lg-3">
+            <div class="stat"><strong data-count="4.2" data-decimals="1" data-suffix="B">4.2B</strong><span>rows
+                analysed every day</span></div>
+          </div>
+          <div class="col-6 col-lg-3">
+            <div class="stat"><strong data-count="38" data-suffix=" sec">38 sec</strong><span>average time to connect a
+                source</span></div>
+          </div>
+          <div class="col-6 col-lg-3">
+            <div class="stat"><strong data-count="2400" data-suffix="+">2,400+</strong><span>teams asking NOVA
+                questions</span></div>
+          </div>
+          <div class="col-6 col-lg-3">
+            <div class="stat"><strong data-count="99.98" data-decimals="2" data-suffix="%">99.98%</strong><span>uptime
+                over the last 12 months</span></div>
+          </div>
         </div>
       </div>
     </section>
@@ -306,21 +363,29 @@ GROUP BY day ORDER BY day;</code></pre>
       <div class="container">
         <div class="text-center mx-auto mb-5" style="max-width: 40rem;">
           <h2 class="section-title">One place for every number your company runs on.</h2>
-          <p class="section-sub mt-3">Revenue, product and support data side by side, with the answer a question away.</p>
+          <p class="section-sub mt-3">Revenue, product and support data side by side, with the answer a question away.
+          </p>
         </div>
         <div class="showcase-stage">
           <div class="showcase-main">
-            <aside class="side"><i class="bi bi-grid-1x2-fill on"></i><i class="bi bi-graph-up"></i><i class="bi bi-people"></i><i class="bi bi-gear"></i></aside>
+            <aside class="side"><i class="bi bi-grid-1x2-fill on"></i><i class="bi bi-graph-up"></i><i
+                class="bi bi-people"></i><i class="bi bi-gear"></i></aside>
             <div class="board">
               <div class="board-head"><strong>Revenue overview</strong><span>Last 12 months</span></div>
               <div class="bars">
-                <i style="--h:34"></i><i style="--h:42"></i><i style="--h:38"></i><i style="--h:50"></i><i style="--h:46"></i><i style="--h:58"></i>
-                <i style="--h:55"></i><i style="--h:64"></i><i style="--h:70"></i><i style="--h:76"></i><i style="--h:88"></i><i style="--h:96"></i>
+                <i style="--h:34"></i><i style="--h:42"></i><i style="--h:38"></i><i style="--h:50"></i><i
+                  style="--h:46"></i><i style="--h:58"></i>
+                <i style="--h:55"></i><i style="--h:64"></i><i style="--h:70"></i><i style="--h:76"></i><i
+                  style="--h:88"></i><i style="--h:96"></i>
               </div>
             </div>
           </div>
-          <div class="float-card f1" data-speed="0.35"><i class="bi bi-bullseye"></i><div><small>Conversion</small><strong>3.8%</strong></div><em>+0.4</em></div>
-          <div class="float-card f2" data-speed="0.2"><i class="bi bi-graph-up-arrow"></i><div><small>Forecast, next month</small><strong>$62k</strong></div></div>
+          <div class="float-card f1" data-speed="0.35"><i class="bi bi-bullseye"></i>
+            <div><small>Conversion</small><strong>3.8%</strong></div><em>+0.4</em>
+          </div>
+          <div class="float-card f2" data-speed="0.2"><i class="bi bi-graph-up-arrow"></i>
+            <div><small>Forecast, next month</small><strong>$62k</strong></div>
+          </div>
         </div>
       </div>
     </section>
@@ -330,7 +395,8 @@ GROUP BY day ORDER BY day;</code></pre>
       <div class="container">
         <div class="text-center mx-auto mb-5" style="max-width: 40rem;">
           <h2 class="section-title">Ask NOVA anything. Try it right now.</h2>
-          <p class="section-sub mt-3">Pick a question or type your own. This demo runs on sample data to show how NOVA answers.</p>
+          <p class="section-sub mt-3">Pick a question or type your own. This demo runs on sample data to show how NOVA
+            answers.</p>
         </div>
 
         <div class="ask-app">
@@ -338,7 +404,8 @@ GROUP BY day ORDER BY day;</code></pre>
           <div class="ask-body">
             <div class="ask-chat" aria-live="polite">
               <div class="a-msg a-user" id="askUser" hidden></div>
-              <div class="a-msg a-nova" id="askNova">Hi, I am NOVA. Pick a question below and I will find the cause.</div>
+              <div class="a-msg a-nova" id="askNova">Hi, I am NOVA. Pick a question below and I will find the cause.
+              </div>
               <ul class="a-causes" id="askCauses"></ul>
             </div>
             <div class="ask-viz">
@@ -355,7 +422,9 @@ GROUP BY day ORDER BY day;</code></pre>
               <button type="button" class="a-chip" data-id="channel">Which channel brings the best customers?</button>
             </div>
             <form class="a-form" id="askForm" novalidate>
-              <input type="text" id="askInput" maxlength="120" placeholder="Or type your own, for example: why did revenue jump?" aria-label="Ask NOVA a question" autocomplete="off">
+              <input type="text" id="askInput" maxlength="120"
+                placeholder="Or type your own, for example: why did revenue jump?" aria-label="Ask NOVA a question"
+                autocomplete="off">
               <button type="submit" class="btn btn-nova">Ask</button>
             </form>
             <p class="a-note">Sample data for demonstration. The real NOVA answers questions about your own data.</p>
@@ -377,30 +446,51 @@ GROUP BY day ORDER BY day;</code></pre>
       </div>
       <div class="swiper swiper-t">
         <div class="swiper-wrapper">
-              <div class="swiper-slide"><figure class="t-card">
-                <blockquote>We used to wait two days for an analyst. Now the whole team has the answer before standup.</blockquote>
-                <figcaption class="t-person"><span class="avatar">SM</span><span><strong>Sana Malik</strong><small>Head of Growth, Halcyon</small></span></figcaption>
-              </figure></div>
-              <div class="swiper-slide"><figure class="t-card">
-                <blockquote>NOVA told us why churn moved, not just that it did. We fixed onboarding the same week.</blockquote>
-                <figcaption class="t-person"><span class="avatar">DO</span><span><strong>Daniel Ortiz</strong><small>COO, Meridian Labs</small></span></figcaption>
-              </figure></div>
-              <div class="swiper-slide"><figure class="t-card">
-                <blockquote>I stopped building one-off dashboards. People just ask NOVA.</blockquote>
-                <figcaption class="t-person"><span class="avatar">PR</span><span><strong>Priya Raman</strong><small>Data Lead, Fernhill</small></span></figcaption>
-              </figure></div>
-              <div class="swiper-slide"><figure class="t-card">
-                <blockquote>The Slack alerts explain themselves. That alone saved us from a bad release.</blockquote>
-                <figcaption class="t-person"><span class="avatar">MH</span><span><strong>Marcus Hale</strong><small>CTO, Parcel&amp;Co</small></span></figcaption>
-              </figure></div>
-              <div class="swiper-slide"><figure class="t-card">
-                <blockquote>Setup took under a minute. Our finance team was asking questions by lunch.</blockquote>
-                <figcaption class="t-person"><span class="avatar">AT</span><span><strong>Aiko Tanaka</strong><small>VP Finance, Tidewater</small></span></figcaption>
-              </figure></div>
-              <div class="swiper-slide"><figure class="t-card">
-                <blockquote>It reads our warehouse and never copies it, which made security sign-off painless.</blockquote>
-                <figcaption class="t-person"><span class="avatar">LF</span><span><strong>Lena Fischer</strong><small>Head of Security, Kinetic</small></span></figcaption>
-              </figure></div>
+          <div class="swiper-slide">
+            <figure class="t-card">
+              <blockquote>We used to wait two days for an analyst. Now the whole team has the answer before standup.
+              </blockquote>
+              <figcaption class="t-person"><span class="avatar">SM</span><span><strong>Sana Malik</strong><small>Head of
+                    Growth, Halcyon</small></span></figcaption>
+            </figure>
+          </div>
+          <div class="swiper-slide">
+            <figure class="t-card">
+              <blockquote>NOVA told us why churn moved, not just that it did. We fixed onboarding the same week.
+              </blockquote>
+              <figcaption class="t-person"><span class="avatar">DO</span><span><strong>Daniel Ortiz</strong><small>COO,
+                    Meridian Labs</small></span></figcaption>
+            </figure>
+          </div>
+          <div class="swiper-slide">
+            <figure class="t-card">
+              <blockquote>I stopped building one-off dashboards. People just ask NOVA.</blockquote>
+              <figcaption class="t-person"><span class="avatar">PR</span><span><strong>Priya Raman</strong><small>Data
+                    Lead, Fernhill</small></span></figcaption>
+            </figure>
+          </div>
+          <div class="swiper-slide">
+            <figure class="t-card">
+              <blockquote>The Slack alerts explain themselves. That alone saved us from a bad release.</blockquote>
+              <figcaption class="t-person"><span class="avatar">MH</span><span><strong>Marcus Hale</strong><small>CTO,
+                    Parcel&amp;Co</small></span></figcaption>
+            </figure>
+          </div>
+          <div class="swiper-slide">
+            <figure class="t-card">
+              <blockquote>Setup took under a minute. Our finance team was asking questions by lunch.</blockquote>
+              <figcaption class="t-person"><span class="avatar">AT</span><span><strong>Aiko Tanaka</strong><small>VP
+                    Finance, Tidewater</small></span></figcaption>
+            </figure>
+          </div>
+          <div class="swiper-slide">
+            <figure class="t-card">
+              <blockquote>It reads our warehouse and never copies it, which made security sign-off painless.
+              </blockquote>
+              <figcaption class="t-person"><span class="avatar">LF</span><span><strong>Lena Fischer</strong><small>Head
+                    of Security, Kinetic</small></span></figcaption>
+            </figure>
+          </div>
         </div>
       </div>
     </section>
@@ -413,22 +503,26 @@ GROUP BY day ORDER BY day;</code></pre>
             <h2 class="section-title">See how much time your team could get back.</h2>
             <p class="section-sub mt-3">Move the sliders to match your team. The numbers update as you go.</p>
             <div class="roi-inputs">
-        <div class="roi-field">
-          <div class="roi-row"><label for="roiTeam">People who ask data questions</label><output id="roiTeamOut" for="roiTeam">8</output></div>
-          <input type="range" id="roiTeam" min="1" max="50" value="8" style="--p:14.29%">
-        </div>
-        <div class="roi-field">
-          <div class="roi-row"><label for="roiAsk">Questions each person asks per week</label><output id="roiAskOut" for="roiAsk">4</output></div>
-          <input type="range" id="roiAsk" min="1" max="20" value="4" style="--p:15.79%">
-        </div>
-        <div class="roi-field">
-          <div class="roi-row"><label for="roiMins">Minutes to get one answer today</label><output id="roiMinsOut" for="roiMins">30 min</output></div>
-          <input type="range" id="roiMins" min="5" max="90" value="30" style="--p:29.41%">
-        </div>
-        <div class="roi-field">
-          <div class="roi-row"><label for="roiRate">Average cost of an hour of work</label><output id="roiRateOut" for="roiRate">$30</output></div>
-          <input type="range" id="roiRate" min="10" max="120" value="30" style="--p:18.18%">
-        </div>
+              <div class="roi-field">
+                <div class="roi-row"><label for="roiTeam">People who ask data questions</label><output id="roiTeamOut"
+                    for="roiTeam">8</output></div>
+                <input type="range" id="roiTeam" min="1" max="50" value="8" style="--p:14.29%">
+              </div>
+              <div class="roi-field">
+                <div class="roi-row"><label for="roiAsk">Questions each person asks per week</label><output
+                    id="roiAskOut" for="roiAsk">4</output></div>
+                <input type="range" id="roiAsk" min="1" max="20" value="4" style="--p:15.79%">
+              </div>
+              <div class="roi-field">
+                <div class="roi-row"><label for="roiMins">Minutes to get one answer today</label><output id="roiMinsOut"
+                    for="roiMins">30 min</output></div>
+                <input type="range" id="roiMins" min="5" max="90" value="30" style="--p:29.41%">
+              </div>
+              <div class="roi-field">
+                <div class="roi-row"><label for="roiRate">Average cost of an hour of work</label><output id="roiRateOut"
+                    for="roiRate">$30</output></div>
+                <input type="range" id="roiRate" min="10" max="120" value="30" style="--p:18.18%">
+              </div>
             </div>
           </div>
 
@@ -438,12 +532,18 @@ GROUP BY day ORDER BY day;</code></pre>
               <p class="roi-big"><b id="roiHours" data-v="66.9707">67</b><span>hours</span></p>
               <p class="roi-value">Worth about <strong id="roiMoney" data-v="2009.1200">$2,009</strong> a month</p>
               <div class="roi-bars">
-                <div class="roi-bar"><span>Today</span><div class="track"><i id="barToday" style="--s:1"></i></div><b id="roiToday" data-v="69.2800">69 h</b></div>
-                <div class="roi-bar"><span>With NOVA</span><div class="track"><i id="barNova" class="nova-bar" style="--s:0.0333"></i></div><b id="roiNova" data-v="2.3093">2 h</b></div>
+                <div class="roi-bar"><span>Today</span>
+                  <div class="track"><i id="barToday" style="--s:1"></i></div><b id="roiToday" data-v="69.2800">69 h</b>
+                </div>
+                <div class="roi-bar"><span>With NOVA</span>
+                  <div class="track"><i id="barNova" class="nova-bar" style="--s:0.0333"></i></div><b id="roiNova"
+                    data-v="2.3093">2 h</b>
+                </div>
               </div>
               <p class="roi-ratio" id="roiRatio">About 41× the cost of the Team plan</p>
               <a href="#start" class="btn btn-nova btn-lg magnetic">Start free</a>
-              <p class="roi-note">Illustrative estimate. It assumes 4.33 weeks a month and that NOVA answers each question in about a minute. The Team plan costs $49 a month.</p>
+              <p class="roi-note">Illustrative estimate. It assumes 4.33 weeks a month and that NOVA answers each
+                question in about a minute. The Team plan costs $49 a month.</p>
             </div>
           </div>
         </div>
@@ -455,20 +555,77 @@ GROUP BY day ORDER BY day;</code></pre>
       <div class="container">
         <div class="text-center mx-auto mb-5" style="max-width: 38rem;">
           <h2 class="section-title">NOVA compared with how you work today.</h2>
-          <p class="section-sub mt-3">A plain look at what changes when you stop digging through spreadsheets and dashboards.</p>
+          <p class="section-sub mt-3">A plain look at what changes when you stop digging through spreadsheets and
+            dashboards.</p>
         </div>
         <div class="compare-wrap">
           <table class="compare" role="table">
             <caption class="visually-hidden">Comparison of NOVA, spreadsheets and traditional dashboards</caption>
             <thead role="rowgroup">
-              <tr role="row"><th role="columnheader" scope="col"><span class="visually-hidden">Feature</span></th><th role="columnheader" scope="col" class="nova">NOVA</th><th role="columnheader" scope="col">Spreadsheets</th><th role="columnheader" scope="col">Traditional dashboards</th></tr>
+              <tr role="row">
+                <th role="columnheader" scope="col"><span class="visually-hidden">Feature</span></th>
+                <th role="columnheader" scope="col" class="nova">NOVA</th>
+                <th role="columnheader" scope="col">Spreadsheets</th>
+                <th role="columnheader" scope="col">Traditional dashboards</th>
+              </tr>
             </thead>
             <tbody role="rowgroup">
-            <tr role="row"><th role="rowheader" scope="row">Ask questions in plain English</th><td class="nova" role="cell" data-label="NOVA"><span class="val"><i class="bi bi-check-circle-fill mark yes" aria-hidden="true"></i><span class="visually-hidden">Yes. </span>Built in</span></td><td role="cell" data-label="Spreadsheets"><span class="val"><i class="bi bi-x-circle-fill mark no" aria-hidden="true"></i><span class="visually-hidden">No. </span>Formulas required</span></td><td role="cell" data-label="Traditional dashboards"><span class="val"><i class="bi bi-dash-circle-fill mark part" aria-hidden="true"></i><span class="visually-hidden">Partly. </span>Only pre-built charts</span></td></tr>
-            <tr role="row"><th role="rowheader" scope="row">Explains why a number moved</th><td class="nova" role="cell" data-label="NOVA"><span class="val"><i class="bi bi-check-circle-fill mark yes" aria-hidden="true"></i><span class="visually-hidden">Yes. </span>Automatically</span></td><td role="cell" data-label="Spreadsheets"><span class="val"><i class="bi bi-x-circle-fill mark no" aria-hidden="true"></i><span class="visually-hidden">No. </span>Manual digging</span></td><td role="cell" data-label="Traditional dashboards"><span class="val"><i class="bi bi-x-circle-fill mark no" aria-hidden="true"></i><span class="visually-hidden">No. </span>Shows what, not why</span></td></tr>
-            <tr role="row"><th role="rowheader" scope="row">Time to the first answer</th><td class="nova" role="cell" data-label="NOVA"><span class="val"><i class="bi bi-check-circle-fill mark yes" aria-hidden="true"></i><span class="visually-hidden">Yes. </span>About a minute</span></td><td role="cell" data-label="Spreadsheets"><span class="val"><i class="bi bi-dash-circle-fill mark part" aria-hidden="true"></i><span class="visually-hidden">Partly. </span>Hours of copy and paste</span></td><td role="cell" data-label="Traditional dashboards"><span class="val"><i class="bi bi-dash-circle-fill mark part" aria-hidden="true"></i><span class="visually-hidden">Partly. </span>Days with an analyst</span></td></tr>
-            <tr role="row"><th role="rowheader" scope="row">Easy for anyone on the team</th><td class="nova" role="cell" data-label="NOVA"><span class="val"><i class="bi bi-check-circle-fill mark yes" aria-hidden="true"></i><span class="visually-hidden">Yes. </span>No training needed</span></td><td role="cell" data-label="Spreadsheets"><span class="val"><i class="bi bi-dash-circle-fill mark part" aria-hidden="true"></i><span class="visually-hidden">Partly. </span>Usually one expert</span></td><td role="cell" data-label="Traditional dashboards"><span class="val"><i class="bi bi-dash-circle-fill mark part" aria-hidden="true"></i><span class="visually-hidden">Partly. </span>Needs training</span></td></tr>
-            <tr role="row"><th role="rowheader" scope="row">Data stays in your warehouse</th><td class="nova" role="cell" data-label="NOVA"><span class="val"><i class="bi bi-check-circle-fill mark yes" aria-hidden="true"></i><span class="visually-hidden">Yes. </span>Read only, never copied</span></td><td role="cell" data-label="Spreadsheets"><span class="val"><i class="bi bi-x-circle-fill mark no" aria-hidden="true"></i><span class="visually-hidden">No. </span>Exported copies</span></td><td role="cell" data-label="Traditional dashboards"><span class="val"><i class="bi bi-dash-circle-fill mark part" aria-hidden="true"></i><span class="visually-hidden">Partly. </span>Depends on the tool</span></td></tr>
+              <tr role="row">
+                <th role="rowheader" scope="row">Ask questions in plain English</th>
+                <td class="nova" role="cell" data-label="NOVA"><span class="val"><i
+                      class="bi bi-check-circle-fill mark yes" aria-hidden="true"></i><span class="visually-hidden">Yes.
+                    </span>Built in</span></td>
+                <td role="cell" data-label="Spreadsheets"><span class="val"><i class="bi bi-x-circle-fill mark no"
+                      aria-hidden="true"></i><span class="visually-hidden">No. </span>Formulas required</span></td>
+                <td role="cell" data-label="Traditional dashboards"><span class="val"><i
+                      class="bi bi-dash-circle-fill mark part" aria-hidden="true"></i><span
+                      class="visually-hidden">Partly. </span>Only pre-built charts</span></td>
+              </tr>
+              <tr role="row">
+                <th role="rowheader" scope="row">Explains why a number moved</th>
+                <td class="nova" role="cell" data-label="NOVA"><span class="val"><i
+                      class="bi bi-check-circle-fill mark yes" aria-hidden="true"></i><span class="visually-hidden">Yes.
+                    </span>Automatically</span></td>
+                <td role="cell" data-label="Spreadsheets"><span class="val"><i class="bi bi-x-circle-fill mark no"
+                      aria-hidden="true"></i><span class="visually-hidden">No. </span>Manual digging</span></td>
+                <td role="cell" data-label="Traditional dashboards"><span class="val"><i
+                      class="bi bi-x-circle-fill mark no" aria-hidden="true"></i><span class="visually-hidden">No.
+                    </span>Shows what, not why</span></td>
+              </tr>
+              <tr role="row">
+                <th role="rowheader" scope="row">Time to the first answer</th>
+                <td class="nova" role="cell" data-label="NOVA"><span class="val"><i
+                      class="bi bi-check-circle-fill mark yes" aria-hidden="true"></i><span class="visually-hidden">Yes.
+                    </span>About a minute</span></td>
+                <td role="cell" data-label="Spreadsheets"><span class="val"><i class="bi bi-dash-circle-fill mark part"
+                      aria-hidden="true"></i><span class="visually-hidden">Partly. </span>Hours of copy and paste</span>
+                </td>
+                <td role="cell" data-label="Traditional dashboards"><span class="val"><i
+                      class="bi bi-dash-circle-fill mark part" aria-hidden="true"></i><span
+                      class="visually-hidden">Partly. </span>Days with an analyst</span></td>
+              </tr>
+              <tr role="row">
+                <th role="rowheader" scope="row">Easy for anyone on the team</th>
+                <td class="nova" role="cell" data-label="NOVA"><span class="val"><i
+                      class="bi bi-check-circle-fill mark yes" aria-hidden="true"></i><span class="visually-hidden">Yes.
+                    </span>No training needed</span></td>
+                <td role="cell" data-label="Spreadsheets"><span class="val"><i class="bi bi-dash-circle-fill mark part"
+                      aria-hidden="true"></i><span class="visually-hidden">Partly. </span>Usually one expert</span></td>
+                <td role="cell" data-label="Traditional dashboards"><span class="val"><i
+                      class="bi bi-dash-circle-fill mark part" aria-hidden="true"></i><span
+                      class="visually-hidden">Partly. </span>Needs training</span></td>
+              </tr>
+              <tr role="row">
+                <th role="rowheader" scope="row">Data stays in your warehouse</th>
+                <td class="nova" role="cell" data-label="NOVA"><span class="val"><i
+                      class="bi bi-check-circle-fill mark yes" aria-hidden="true"></i><span class="visually-hidden">Yes.
+                    </span>Read only, never copied</span></td>
+                <td role="cell" data-label="Spreadsheets"><span class="val"><i class="bi bi-x-circle-fill mark no"
+                      aria-hidden="true"></i><span class="visually-hidden">No. </span>Exported copies</span></td>
+                <td role="cell" data-label="Traditional dashboards"><span class="val"><i
+                      class="bi bi-dash-circle-fill mark part" aria-hidden="true"></i><span
+                      class="visually-hidden">Partly. </span>Depends on the tool</span></td>
+              </tr>
             </tbody>
           </table>
         </div>
@@ -507,7 +664,8 @@ GROUP BY day ORDER BY day;</code></pre>
               <span class="badge-pop">Most popular</span>
               <h3 class="plan-name">Team</h3>
               <p class="plan-desc">For teams that live in their numbers.</p>
-              <div class="price"><em class="cur">$</em><b data-monthly="49" data-yearly="39">49</b><span>/ month</span></div>
+              <div class="price"><em class="cur">$</em><b data-monthly="49" data-yearly="39">49</b><span>/ month</span>
+              </div>
               <p class="billed" data-monthly="Billed monthly" data-yearly="Billed yearly">Billed monthly</p>
               <ul>
                 <li><i class="bi bi-check2"></i>Unlimited questions</li>
@@ -522,7 +680,8 @@ GROUP BY day ORDER BY day;</code></pre>
             <article class="plan">
               <h3 class="plan-name">Scale</h3>
               <p class="plan-desc">For companies with strict data rules.</p>
-              <div class="price"><em class="cur">$</em><b data-monthly="149" data-yearly="119">149</b><span>/ month</span></div>
+              <div class="price"><em class="cur">$</em><b data-monthly="149" data-yearly="119">149</b><span>/
+                  month</span></div>
               <p class="billed" data-monthly="Billed monthly" data-yearly="Billed yearly">Billed monthly</p>
               <ul>
                 <li><i class="bi bi-check2"></i>Everything in Team</li>
@@ -544,35 +703,66 @@ GROUP BY day ORDER BY day;</code></pre>
           <div class="col-lg-4">
             <div class="faq-side">
               <h2 class="section-title">Questions, answered.</h2>
-              <p class="section-sub mt-3">Cannot find yours? Write to <a href="mailto:hello@nova.example" class="link-line">hello@nova.example</a> and a human will reply.</p>
+              <p class="section-sub mt-3">Cannot find yours? Write to <a href="mailto:hello@nova.example"
+                  class="link-line">hello@nova.example</a> and a human will reply.</p>
             </div>
           </div>
           <div class="col-lg-8">
             <div class="accordion" id="faqList">
-            <div class="accordion-item">
-              <h3 class="accordion-header"><button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq0" aria-expanded="true" aria-controls="faq0">Do I need to know SQL?</button></h3>
-              <div id="faq0" class="accordion-collapse collapse show" data-bs-parent="#faqList"><div class="accordion-body">No. Ask in plain English and NOVA writes the query for you. The query is always shown, so an analyst can check it if they want to.</div></div>
-            </div>
-            <div class="accordion-item">
-              <h3 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq1" aria-expanded="false" aria-controls="faq1">Where does my data live?</button></h3>
-              <div id="faq1" class="accordion-collapse collapse" data-bs-parent="#faqList"><div class="accordion-body">In your own warehouse. NOVA reads from it and never copies it. Everything is encrypted in transit and at rest.</div></div>
-            </div>
-            <div class="accordion-item">
-              <h3 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2" aria-expanded="false" aria-controls="faq2">How do I know an answer is right?</button></h3>
-              <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqList"><div class="accordion-body">Every answer comes with the query and the rows behind it. If something looks off, you can open it and see exactly how NOVA got there.</div></div>
-            </div>
-            <div class="accordion-item">
-              <h3 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3" aria-expanded="false" aria-controls="faq3">Which tools can I connect?</button></h3>
-              <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqList"><div class="accordion-body">Warehouses, billing, product analytics and chat tools, more than 40 in total. Most connect in under a minute.</div></div>
-            </div>
-            <div class="accordion-item">
-              <h3 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4" aria-expanded="false" aria-controls="faq4">Can I cancel anytime?</button></h3>
-              <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqList"><div class="accordion-body">Yes. Monthly plans can be cancelled at any time, and your reports stay available for 30 days after.</div></div>
-            </div>
-            <div class="accordion-item">
-              <h3 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq5" aria-expanded="false" aria-controls="faq5">Is there a free plan?</button></h3>
-              <div id="faq5" class="accordion-collapse collapse" data-bs-parent="#faqList"><div class="accordion-body">Yes. Starter is free forever with one data source and 50 questions a month, so you can try NOVA on real data.</div></div>
-            </div>
+              <div class="accordion-item">
+                <h3 class="accordion-header"><button class="accordion-button" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#faq0" aria-expanded="true" aria-controls="faq0">Do I need to know SQL?</button>
+                </h3>
+                <div id="faq0" class="accordion-collapse collapse show" data-bs-parent="#faqList">
+                  <div class="accordion-body">No. Ask in plain English and NOVA writes the query for you. The query is
+                    always shown, so an analyst can check it if they want to.</div>
+                </div>
+              </div>
+              <div class="accordion-item">
+                <h3 class="accordion-header"><button class="accordion-button collapsed" type="button"
+                    data-bs-toggle="collapse" data-bs-target="#faq1" aria-expanded="false" aria-controls="faq1">Where
+                    does my data live?</button></h3>
+                <div id="faq1" class="accordion-collapse collapse" data-bs-parent="#faqList">
+                  <div class="accordion-body">In your own warehouse. NOVA reads from it and never copies it. Everything
+                    is encrypted in transit and at rest.</div>
+                </div>
+              </div>
+              <div class="accordion-item">
+                <h3 class="accordion-header"><button class="accordion-button collapsed" type="button"
+                    data-bs-toggle="collapse" data-bs-target="#faq2" aria-expanded="false" aria-controls="faq2">How do I
+                    know an answer is right?</button></h3>
+                <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqList">
+                  <div class="accordion-body">Every answer comes with the query and the rows behind it. If something
+                    looks off, you can open it and see exactly how NOVA got there.</div>
+                </div>
+              </div>
+              <div class="accordion-item">
+                <h3 class="accordion-header"><button class="accordion-button collapsed" type="button"
+                    data-bs-toggle="collapse" data-bs-target="#faq3" aria-expanded="false" aria-controls="faq3">Which
+                    tools can I connect?</button></h3>
+                <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqList">
+                  <div class="accordion-body">Warehouses, billing, product analytics and chat tools, more than 40 in
+                    total. Most connect in under a minute.</div>
+                </div>
+              </div>
+              <div class="accordion-item">
+                <h3 class="accordion-header"><button class="accordion-button collapsed" type="button"
+                    data-bs-toggle="collapse" data-bs-target="#faq4" aria-expanded="false" aria-controls="faq4">Can I
+                    cancel anytime?</button></h3>
+                <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqList">
+                  <div class="accordion-body">Yes. Monthly plans can be cancelled at any time, and your reports stay
+                    available for 30 days after.</div>
+                </div>
+              </div>
+              <div class="accordion-item">
+                <h3 class="accordion-header"><button class="accordion-button collapsed" type="button"
+                    data-bs-toggle="collapse" data-bs-target="#faq5" aria-expanded="false" aria-controls="faq5">Is there
+                    a free plan?</button></h3>
+                <div id="faq5" class="accordion-collapse collapse" data-bs-parent="#faqList">
+                  <div class="accordion-body">Yes. Starter is free forever with one data source and 50 questions a
+                    month, so you can try NOVA on real data.</div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -589,12 +779,14 @@ GROUP BY day ORDER BY day;</code></pre>
           <p class="section-sub mt-3">Connect your first data source in under a minute. No card needed.</p>
           <!-- Signup form: submissions are delivered to the site owner's inbox via Formspree -->
           <form class="cta-form" id="ctaForm" action="https://formspree.io/f/xkjjkvak" method="POST" novalidate>
-            <input type="email" name="email" id="ctaEmail" placeholder="you@company.com" aria-label="Work email" required>
+            <input type="email" name="email" id="ctaEmail" placeholder="you@company.com" aria-label="Work email"
+              required>
             <input type="text" name="_gotcha" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
             <button type="submit" class="btn btn-nova magnetic">Start free</button>
           </form>
           <p class="cta-msg" id="ctaMsg" role="status" aria-live="polite"></p>
-          <p class="cta-note">We only use your email to tell you about NOVA. <a href="privacy.html" class="link-line">Privacy Policy</a></p>
+          <p class="cta-note">We only use your email to tell you about NOVA. <a href="privacy.html"
+              class="link-line">Privacy Policy</a></p>
         </div>
       </div>
     </section>
@@ -609,15 +801,29 @@ GROUP BY day ORDER BY day;</code></pre>
         </div>
         <div class="col-6 col-lg-2 offset-lg-1">
           <h4>Product</h4>
-          <ul><li><a href="#features">Features</a></li><li><a href="#how">How it works</a></li><li><a href="#pricing">Pricing</a></li><li><a href="#faq">FAQ</a></li></ul>
+          <ul>
+            <li><a href="#features">Features</a></li>
+            <li><a href="#how">How it works</a></li>
+            <li><a href="#pricing">Pricing</a></li>
+            <li><a href="#faq">FAQ</a></li>
+          </ul>
         </div>
         <div class="col-6 col-lg-2">
           <h4>Company</h4>
-          <ul><li><a href="#">About</a></li><li><a href="#">Careers</a></li><li><a href="#">Blog</a></li><li><a href="#">Contact</a></li></ul>
+          <ul>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Careers</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
         </div>
         <div class="col-6 col-lg-2">
           <h4>Legal</h4>
-          <ul><li><a href="privacy.html">Privacy</a></li><li><a href="terms.html">Terms</a></li><li><a href="privacy.html#security">Security</a></li></ul>
+          <ul>
+            <li><a href="privacy.html">Privacy</a></li>
+            <li><a href="terms.html">Terms</a></li>
+            <li><a href="privacy.html#security">Security</a></li>
+          </ul>
         </div>
       </div>
       <div class="foot-bottom">
@@ -638,7 +844,8 @@ GROUP BY day ORDER BY day;</code></pre>
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content demo">
         <h2 class="visually-hidden" id="demoTitle">NOVA product demo</h2>
-        <button type="button" class="demo-close" data-bs-dismiss="modal" aria-label="Close demo"><i class="bi bi-x-lg"></i></button>
+        <button type="button" class="demo-close" data-bs-dismiss="modal" aria-label="Close demo"><i
+            class="bi bi-x-lg"></i></button>
 
         <div class="demo-screen">
           <div class="scene s1">
@@ -654,20 +861,30 @@ GROUP BY day ORDER BY day;</code></pre>
           <div class="scene s2">
             <p class="scene-cap">Ask a question in plain English</p>
             <div class="ask"><i class="bi bi-stars"></i><span id="dTyped"></span></div>
-            <pre class="code d-code"><code><span class="d-ln">SELECT day, COUNT(*) AS signups</span><span class="d-ln">FROM users</span><span class="d-ln">WHERE day &gt;= CURRENT_DATE - 14</span><span class="d-ln">GROUP BY day ORDER BY day;</span></code></pre>
+            <pre
+              class="code d-code"><code><span class="d-ln">SELECT day, COUNT(*) AS signups</span><span class="d-ln">FROM users</span><span class="d-ln">WHERE day &gt;= CURRENT_DATE - 14</span><span class="d-ln">GROUP BY day ORDER BY day;</span></code></pre>
           </div>
 
           <div class="scene s3">
             <p class="scene-cap">NOVA finds the cause and draws the chart</p>
             <svg class="d-chart" viewBox="0 0 600 150" aria-hidden="true">
               <defs>
-                <linearGradient id="dArea" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7B61FF" stop-opacity=".4"/><stop offset="1" stop-color="#7B61FF" stop-opacity="0"/></linearGradient>
-                <linearGradient id="dLine" x1="0" x2="1"><stop offset="0" stop-color="#7B61FF"/><stop offset="1" stop-color="#FF9E6D"/></linearGradient>
+                <linearGradient id="dArea" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0" stop-color="#7B61FF" stop-opacity=".4" />
+                  <stop offset="1" stop-color="#7B61FF" stop-opacity="0" />
+                </linearGradient>
+                <linearGradient id="dLine" x1="0" x2="1">
+                  <stop offset="0" stop-color="#7B61FF" />
+                  <stop offset="1" stop-color="#FF9E6D" />
+                </linearGradient>
               </defs>
-              <path class="d-area" fill="url(#dArea)" d="M0 40 C60 36 100 50 160 44 S260 30 320 36 S400 60 430 106 S520 116 600 122 L600 150 L0 150 Z"/>
-              <path class="d-line" pathLength="1" d="M0 40 C60 36 100 50 160 44 S260 30 320 36 S400 60 430 106 S520 116 600 122"/>
+              <path class="d-area" fill="url(#dArea)"
+                d="M0 40 C60 36 100 50 160 44 S260 30 320 36 S400 60 430 106 S520 116 600 122 L600 150 L0 150 Z" />
+              <path class="d-line" pathLength="1"
+                d="M0 40 C60 36 100 50 160 44 S260 30 320 36 S400 60 430 106 S520 116 600 122" />
             </svg>
-            <p class="d-insight"><i class="bi bi-lightning-charge-fill"></i><span>Signups fell 12% on Tuesday. Checkout slowed down after the 4:10 pm release.</span></p>
+            <p class="d-insight"><i class="bi bi-lightning-charge-fill"></i><span>Signups fell 12% on Tuesday. Checkout
+                slowed down after the 4:10 pm release.</span></p>
           </div>
 
           <div class="scene s4">
@@ -693,9 +910,11 @@ GROUP BY day ORDER BY day;</code></pre>
 
         <div class="demo-controls">
           <button type="button" id="demoPlay" aria-label="Play or pause"><i class="bi bi-play-fill"></i></button>
-          <div class="demo-progress" id="demoProgress" role="slider" tabindex="0" aria-label="Demo progress"><i></i></div>
+          <div class="demo-progress" id="demoProgress" role="slider" tabindex="0" aria-label="Demo progress"><i></i>
+          </div>
           <span id="demoTime">0:00 / 0:33</span>
-          <button type="button" id="demoRestart" aria-label="Restart demo"><i class="bi bi-arrow-counterclockwise"></i></button>
+          <button type="button" id="demoRestart" aria-label="Restart demo"><i
+              class="bi bi-arrow-counterclockwise"></i></button>
         </div>
       </div>
     </div>
@@ -704,9 +923,14 @@ GROUP BY day ORDER BY day;</code></pre>
   <!-- Floating back-to-top button with scroll progress ring -->
   <button type="button" class="fab-top" id="toTop" aria-label="Back to top">
     <svg viewBox="0 0 48 48" aria-hidden="true">
-      <defs><linearGradient id="ringGrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7B61FF"/><stop offset="1" stop-color="#FF9E6D"/></linearGradient></defs>
-      <circle class="ring-bg" cx="24" cy="24" r="21"/>
-      <circle class="ring" cx="24" cy="24" r="21"/>
+      <defs>
+        <linearGradient id="ringGrad" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stop-color="#7B61FF" />
+          <stop offset="1" stop-color="#FF9E6D" />
+        </linearGradient>
+      </defs>
+      <circle class="ring-bg" cx="24" cy="24" r="21" />
+      <circle class="ring" cx="24" cy="24" r="21" />
     </svg>
     <i class="bi bi-arrow-up"></i>
   </button>
@@ -719,9 +943,10 @@ GROUP BY day ORDER BY day;</code></pre>
   <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.9/dist/lenis.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/typed.js@2.1.0/dist/typed.umd.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js"></script>
-  <script src="js/hero3d.js"></script>
+  <script src="assets/js/hero3d.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/swiper@11.1.14/swiper-bundle.min.js"></script>
-  <script src="js/theme.js"></script>
-  <script src="js/main.js"></script>
+  <script src="assets/js/theme.js"></script>
+  <script src="assets/js/main.js"></script>
 </body>
+
 </html>
